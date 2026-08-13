@@ -169,6 +169,29 @@ add_executable(test_attention_variants tests/test_attention_variants.cpp)
 target_link_libraries(test_attention_variants PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
 add_test(NAME test_attention_variants COMMAND test_attention_variants)
 
+add_executable(test_attn_paged tests/test_attn_paged.cpp)
+target_link_libraries(test_attn_paged PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_attn_paged COMMAND test_attn_paged)
+
+add_executable(test_attn_h2o tests/test_attn_h2o.cpp)
+target_link_libraries(test_attn_h2o PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_attn_h2o COMMAND test_attn_h2o)
+
+add_executable(test_attn_chunked tests/test_attn_chunked.cpp)
+target_link_libraries(test_attn_chunked PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_attn_chunked COMMAND test_attn_chunked)
+
+add_executable(test_attn_ring tests/test_attn_ring.cpp)
+target_link_libraries(test_attn_ring PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_attn_ring COMMAND test_attn_ring)
+
+add_executable(test_attn_ring_multi tests/test_attn_ring_multi.cpp)
+target_link_libraries(test_attn_ring_multi PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_attn_ring_multi COMMAND test_attn_ring_multi)
+
+add_executable(test_attn_gqa_iso tests/test_attn_gqa_iso.cpp)
+target_link_libraries(test_attn_gqa_iso PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+
 # Tool targets
 add_executable(dxinspect tools/dxinspect/main.cpp)
 target_link_libraries(dxinspect PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib)

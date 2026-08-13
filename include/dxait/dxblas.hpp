@@ -33,6 +33,18 @@ public:
         uint32_t K
     );
 
+    // F16 GEMM using dot2add (v_dot2_f32_f16) on packed half pairs, RDNA2/RDNA4
+    // friendly. A and B are F16 buffers, C is F32. Mirrors llama mms_f16.
+    void gemm_f16_dot2(
+        Queue* queue,
+        Buffer* out_buf,
+        Buffer* in_a_f16,
+        Buffer* in_b_f16,
+        uint32_t M,
+        uint32_t N,
+        uint32_t K
+    );
+
 private:
     Device* m_device;
     PipelineCache m_pso_cache;

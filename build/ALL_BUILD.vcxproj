@@ -205,6 +205,30 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{C9E13DB4-0B28-37DC-8041-EB650CFAAF9A}</Project>
       <Name>test_attention_variants</Name>
     </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_attn_chunked.vcxproj">
+      <Project>{E8B777AB-EBC3-3ECD-92B6-7755EB70F53E}</Project>
+      <Name>test_attn_chunked</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_attn_gqa_iso.vcxproj">
+      <Project>{CC13E69E-B4C5-38FA-AA7F-25CBCA055999}</Project>
+      <Name>test_attn_gqa_iso</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_attn_h2o.vcxproj">
+      <Project>{B70B0086-D310-3D50-A02F-15AE1914E07B}</Project>
+      <Name>test_attn_h2o</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_attn_paged.vcxproj">
+      <Project>{BECFD6F8-B2B2-3313-8A22-3AF1727C8C08}</Project>
+      <Name>test_attn_paged</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_attn_ring.vcxproj">
+      <Project>{7EB07DF0-977B-3282-92E9-45EA096EF8FE}</Project>
+      <Name>test_attn_ring</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_attn_ring_multi.vcxproj">
+      <Project>{89C5070F-99C2-3108-8FED-E9ED838B1FDB}</Project>
+      <Name>test_attn_ring_multi</Name>
+    </ProjectReference>
     <ProjectReference Include="F:\DXAiSt\build\test_blas_gemm.vcxproj">
       <Project>{196050C1-FE86-3E30-AF10-A7C0EE3E21B4}</Project>
       <Name>test_blas_gemm</Name>

@@ -29,6 +29,8 @@ ComPtr<IDxcBlob> ShaderCompiler::compile_hlsl(
     arguments.push_back(L"-T");
     arguments.push_back(target_profile.c_str());
     arguments.push_back(DXC_ARG_OPTIMIZATION_LEVEL3);
+    // Needed for dot2add / half2 / native 16-bit types (llama uses the same flag).
+    arguments.push_back(L"-enable-16bit-types");
 
     std::vector<std::wstring> macro_strings;
     for (const auto& m : macros) {

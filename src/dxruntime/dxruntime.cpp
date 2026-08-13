@@ -28,7 +28,11 @@ bool TDRGuard::is_device_removed(ID3D12Device* device) {
 }
 
 Device::Device(ComPtr<IDXGIAdapter1> adapter) {
-    if (FAILED(D3D12CreateDevice(adapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&m_device)))) {
+    bool created = SUCCEEDED(D3D12CreateDevice(adapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&m_device)));
+    if (!created) {
+        created = SUCCEEDED(system_d3d12_create_device(adapter.Get(), m_device.ReleaseAndGetAddressOf()));
+    }
+    if (!created) {
         throw std::runtime_error("D3D12CreateDevice failed");
     }
 

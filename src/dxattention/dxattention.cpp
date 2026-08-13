@@ -356,6 +356,9 @@ void AttentionOps::dispatch_attention(
     ID3D12CommandList* lists[] = { m_cmd_list.Get() };
     queue->execute(lists, 1);
     queue->signal(*m_fence, ++m_fence_val);
+    // Synchronous: wait so the next dispatch_attention can safely reset the
+    // shared allocator. Avoids order-dependent behaviour across calls (RDNA2).
+    m_fence->wait(m_fence_val);
 }
 
 } // namespace dxait

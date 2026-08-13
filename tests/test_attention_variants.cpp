@@ -141,7 +141,7 @@ int main() {
                 float got = o[(h * seq + i) * dim];
                 float err = std::fabs(got - ref);
                 if (err > max_err) max_err = err;
-                if (err > 1e-2f) ok = false;
+                if (err > 1e-2f) { printf("    [%s] h=%u i=%u got=%.5f ref=%.5f\n", c.name, h, i, got, ref); ok = false; }
             }
         }
         out_buf->unmap();

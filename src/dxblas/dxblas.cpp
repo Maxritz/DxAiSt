@@ -65,6 +65,49 @@ void gemm_tiled(uint3 id : SV_DispatchThreadID, uint3 gid : SV_GroupID, uint lti
 }
 )";
 
+// F16 packed GEMM using dot2add: A and B are F16, K must be even. Loads two
+// halves per uint, accumulates with dot2add (v_dot2_f32_f16 on RDNA2, 2 FMA in
+// 1 instruction). Mirrors llama mms_f16.
+static const char g_gemm_f16_dot2_hlsl[] = R"(
+RWStructuredBuffer<float> g_out : register(u0);
+StructuredBuffer<uint> g_a : register(t0);
+StructuredBuffer<uint> g_b : register(t1);
+
+cbuffer GemmF16CB : register(b0) {
+    uint g_M;
+    uint g_N;
+    uint g_K;      // even
+    uint g_pad;
+};
+
+[numthreads(16, 16, 1)]
+void gemm_f16_dot2(uint3 id : SV_DispatchThreadID) {
+    uint row = id.y;
+    uint col = id.x;
+    if (row >= g_M || col >= g_N) return;
+
+    float acc = 0.0f;
+    // K halves packed per uint: 2 elements per load
+    for (uint k = 0; k + 1u < g_K; k += 2u) {
+        uint aw = g_a[row * (g_K / 2u) + k / 2u];
+        uint bw = g_b[k * (g_N / 2u) + col / 2u];
+        half2 ha = half2(f16tof32(aw & 0xFFFFu), f16tof32(aw >> 16));
+        half2 hb = half2(f16tof32(bw & 0xFFFFu), f16tof32(bw >> 16));
+        // dot2add on RDNA2/RDNA4 (v_dot2_f32_f16). Fallback manual if compiler lacks it.
+        acc = dot2add(ha, hb, acc);
+    }
+    if ((g_K & 1u) != 0u) {
+        uint k = g_K - 1u;
+        uint aw = g_a[row * (g_K / 2u) + k / 2u];
+        uint bw = g_b[k * (g_N / 2u) + col / 2u];
+        float a = f16tof32((k & 1u) ? (aw >> 16) : (aw & 0xFFFFu));
+        float b = f16tof32((col & 1u) ? (bw >> 16) : (bw & 0xFFFFu));
+        acc += a * b;
+    }
+    g_out[row * g_N + col] = acc;
+}
+)";
+
 BLAS::BLAS(Device* device)
     : m_device(device), m_pso_cache(device->get()), m_fence(device->create_fence(0)) {
     init_root_signature();
@@ -181,6 +224,39 @@ void BLAS::gemm(
     uint32_t grid_y = (M + 15) / 16;
     m_cmd_list->Dispatch(grid_x, grid_y, 1);
 
+    m_cmd_list->Close();
+
+    ID3D12CommandList* lists[] = { m_cmd_list.Get() };
+    queue->execute(lists, 1);
+    queue->signal(*m_fence, ++m_fence_val);
+}
+
+void BLAS::gemm_f16_dot2(
+    Queue* queue,
+    Buffer* out_buf,
+    Buffer* in_a_f16,
+    Buffer* in_b_f16,
+    uint32_t M,
+    uint32_t N,
+    uint32_t K
+) {
+    auto pso = m_pso_cache.get_or_compile("gemm_f16_dot2", g_gemm_f16_dot2_hlsl, m_root_sig.Get(), L"gemm_f16_dot2");
+
+    if (m_fence_val > 0) m_fence->wait(m_fence_val);
+    m_cmd_alloc->Reset();
+    m_cmd_list->Reset(m_cmd_alloc.Get(), pso.Get());
+    m_cmd_list->SetComputeRootSignature(m_root_sig.Get());
+
+    struct CB {
+        uint32_t M, N, K, pad;
+    } cb{M, N, K, 0};
+
+    m_cmd_list->SetComputeRoot32BitConstants(0, 4, &cb, 0);
+    m_cmd_list->SetComputeRootUnorderedAccessView(1, out_buf->get()->GetGPUVirtualAddress());
+    m_cmd_list->SetComputeRootShaderResourceView(2, in_a_f16->get()->GetGPUVirtualAddress());
+    m_cmd_list->SetComputeRootShaderResourceView(3, in_b_f16->get()->GetGPUVirtualAddress());
+
+    m_cmd_list->Dispatch((N + 15) / 16, (M + 15) / 16, 1);
     m_cmd_list->Close();
 
     ID3D12CommandList* lists[] = { m_cmd_list.Get() };

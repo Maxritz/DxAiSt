@@ -1,14 +1,22 @@
 #include "dxait/dxait.hpp"
 #include <codecvt>
 #include <locale>
-
-// Agility SDK 1.720 Export Symbols
-extern "C" {
-    __declspec(dllexport) extern const UINT D3D12SDKVersion = 720;
-    __declspec(dllexport) extern const char* D3D12SDKPath = ".\\D3D12\\";
-}
+#include <windows.h>
 
 namespace dxait {
+
+// System D3D12 entry (no Agility). Used when the Agility DLL is absent.
+HRESULT system_d3d12_create_device(IDXGIAdapter1* adapter, ID3D12Device** out) {
+    static decltype(&D3D12CreateDevice) fn = nullptr;
+    if (!fn) {
+        HMODULE m = LoadLibraryA("d3d12.dll");
+        if (!m) return E_FAIL;
+        fn = reinterpret_cast<decltype(&D3D12CreateDevice)>((void*)GetProcAddress(m, "D3D12CreateDevice"));
+        if (!fn) return E_FAIL;
+    }
+    return fn(adapter, D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(out));
+}
+
 
 static ArchitectureFamily classify_gpu_architecture(uint32_t vendor_id, uint32_t device_id, uint32_t wave_min, uint32_t wave_max) {
     if (vendor_id == 0x1002) { // AMD
@@ -35,14 +43,20 @@ std::vector<AdapterCaps> Adapter::enumerate() {
     ComPtr<IDXGIFactory6> factory;
     if (FAILED(CreateDXGIFactory1(IID_PPV_ARGS(&factory)))) return caps_list;
 
+    // Enumerate ALL adapters (EnumAdapters1), not just GPU-preference ones.
+    // On headless/RDP boxes the discrete GPU may not be the display adapter, so
+    // EnumAdapterByGpuPreference(HIGH_PERFORMANCE) can miss it. llama.cpp does
+    // the same full-enumeration route.
     ComPtr<IDXGIAdapter1> adapter;
-    for (UINT i = 0; factory->EnumAdapterByGpuPreference(i, DXGI_GPU_PREFERENCE_HIGH_PERFORMANCE, IID_PPV_ARGS(&adapter)) != DXGI_ERROR_NOT_FOUND; ++i) {
+    for (UINT i = 0; factory->EnumAdapters1(i, &adapter) != DXGI_ERROR_NOT_FOUND; ++i) {
         DXGI_ADAPTER_DESC1 desc;
         if (FAILED(adapter->GetDesc1(&desc))) continue;
+        // Skip only WARP (software rasterizer); keep everything else including
+        // non-display compute-only GPUs.
         if (desc.Flags & DXGI_ADAPTER_FLAG_SOFTWARE) continue;
 
         ComPtr<ID3D12Device> test_device;
-        if (FAILED(D3D12CreateDevice(adapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&test_device)))) continue;
+        if (FAILED(system_d3d12_create_device(adapter.Get(), test_device.ReleaseAndGetAddressOf()))) continue;
 
         AdapterCaps caps{};
         char name_buf[256] = {};
@@ -94,7 +108,7 @@ std::unique_ptr<Device> Adapter::create_device(uint32_t index) {
     if (FAILED(CreateDXGIFactory1(IID_PPV_ARGS(&factory)))) return nullptr;
 
     ComPtr<IDXGIAdapter1> adapter;
-    if (FAILED(factory->EnumAdapterByGpuPreference(index, DXGI_GPU_PREFERENCE_HIGH_PERFORMANCE, IID_PPV_ARGS(&adapter)))) {
+    if (FAILED(factory->EnumAdapters1(index, &adapter))) {
         return nullptr;
     }
     return std::make_unique<Device>(adapter);

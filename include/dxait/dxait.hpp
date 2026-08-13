@@ -15,6 +15,9 @@ namespace dxait {
 
 using Microsoft::WRL::ComPtr;
 
+// System D3D12 fallback (no Agility): used when the Agility DLL is absent.
+HRESULT system_d3d12_create_device(IDXGIAdapter1* adapter, ID3D12Device** out);
+
 enum class QueueType {
     Direct = D3D12_COMMAND_LIST_TYPE_DIRECT,
     Compute = D3D12_COMMAND_LIST_TYPE_COMPUTE,

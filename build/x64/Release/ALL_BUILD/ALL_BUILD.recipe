@@ -26,6 +26,24 @@
       <FullPath>F:\DXAiSt\build\Release\test_attention_variants.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_attn_chunked.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_attn_gqa_iso.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_attn_h2o.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_attn_paged.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_attn_ring.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_attn_ring_multi.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
       <FullPath>F:\DXAiSt\build\Release\test_blas_gemm.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>

@@ -43,6 +43,31 @@ static float cpu_attention_one(
     return out[0];
 }
 
+static float cpu_linear_one(
+    const std::vector<float>& q, const std::vector<float>& k, const std::vector<float>& v,
+    uint32_t seq, uint32_t dim, uint32_t i, uint32_t kv_head, uint32_t q_head)
+{
+    auto kern = [](float x) { return (x > 0.0f) ? (x + 1.0f) : std::exp(x); };
+    std::vector<std::vector<float>> S(dim, std::vector<float>(dim, 0.0f));
+    std::vector<float> z(dim, 0.0f);
+    for (uint32_t j = 0; j <= i && j < seq; ++j) {
+        for (uint32_t d = 0; d < dim; ++d) {
+            float kd = kern(k[(kv_head * seq + j) * dim + d]);
+            z[d] += kd;
+            for (uint32_t e = 0; e < dim; ++e)
+                S[d][e] += kd * v[(kv_head * seq + j) * dim + e];
+        }
+    }
+    float norm = 0.0f;
+    std::vector<float> o(dim, 0.0f);
+    for (uint32_t d = 0; d < dim; ++d) {
+        float qd = kern(q[(q_head * seq + i) * dim + d]);
+        norm += qd * z[d];
+        for (uint32_t e = 0; e < dim; ++e) o[e] += qd * S[d][e];
+    }
+    return (norm > 0.0f) ? (o[0] / norm) : 0.0f;
+}
+
 int main() {
     printf("DXAiT Attention Mechanism Variants Test (MHA / GQA / MQA / SWA)\n");
     printf("===============================================================\n\n");
@@ -58,9 +83,9 @@ int main() {
     constexpr float scale = 0.5f;
 
     constexpr uint64_t q_bytes = (uint64_t)n_qh * seq * dim * sizeof(float);
-    constexpr uint64_t kv_bytes = (uint64_t)n_kvh * seq * dim * sizeof(float);
+    constexpr uint64_t kv_bytes = (uint64_t)n_qh * seq * dim * sizeof(float); // sized for max kv heads (MHA)
 
-    std::vector<float> q(n_qh * seq * dim), k(n_kvh * seq * dim), v(n_kvh * seq * dim);
+    std::vector<float> q(n_qh * seq * dim), k(n_qh * seq * dim), v(n_qh * seq * dim);
     for (uint32_t i = 0; i < q.size(); ++i) q[i] = ((float)i * 0.13f) - 1.0f;
     for (uint32_t i = 0; i < k.size(); ++i) k[i] = ((float)i * 0.07f) + 0.5f;
     for (uint32_t i = 0; i < v.size(); ++i) v[i] = ((float)i * 0.03f) + 0.1f;
@@ -76,12 +101,14 @@ int main() {
     auto cq = device->create_queue(dxait::QueueType::Compute);
     auto fence = device->create_fence(0);
 
-    struct Case { const char* name; dxait::AttentionMechanism mech; uint32_t kvh; bool causal; uint32_t window; };
+    struct Case { const char* name; dxait::AttentionMechanism mech; uint32_t kvh; bool causal; uint32_t window; bool linear; };
     const Case cases[] = {
-        {"MHA (kv=q heads)", dxait::AttentionMechanism::MHA, n_qh, false, 0},
-        {"GQA (shared KV)",  dxait::AttentionMechanism::GQA, n_kvh, false, 0},
-        {"MQA (1 KV head)",  dxait::AttentionMechanism::MQA, 1, false, 0},
-        {"SWA (causal win=4)", dxait::AttentionMechanism::SlidingWindow, n_kvh, true, 4},
+        {"MHA (kv=q heads)", dxait::AttentionMechanism::MHA, n_qh, false, 0, false},
+        {"GQA (shared KV)",  dxait::AttentionMechanism::GQA, n_kvh, false, 0, false},
+        {"MQA (1 KV head)",  dxait::AttentionMechanism::MQA, 1, false, 0, false},
+        {"SWA (causal win=4)", dxait::AttentionMechanism::SlidingWindow, n_kvh, true, 4, false},
+        {"FlashAttention",   dxait::AttentionMechanism::FlashAttention, n_kvh, true, 0, false},
+        {"LinearAttention",  dxait::AttentionMechanism::LinearAttention, n_kvh, true, 0, true},
     };
 
     bool all_ok = true;
@@ -108,7 +135,9 @@ int main() {
             for (uint32_t i = 0; i < seq; ++i) {
                 uint32_t kvh = (c.kvh * h / n_qh);
                 if (kvh >= c.kvh) kvh = c.kvh - 1;
-                float ref = cpu_attention_one(q, k, v, seq, dim, i, kvh, h, n_qh, c.kvh, c.causal, c.window, scale);
+                float ref = c.linear
+                    ? cpu_linear_one(q, k, v, seq, dim, i, kvh, h)
+                    : cpu_attention_one(q, k, v, seq, dim, i, kvh, h, n_qh, c.kvh, c.causal, c.window, scale);
                 float got = o[(h * seq + i) * dim];
                 float err = std::fabs(got - ref);
                 if (err > max_err) max_err = err;

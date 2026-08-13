@@ -5,6 +5,37 @@
 
 namespace dxait {
 
+// RDNA2 (gfx1030/1031) device-id range: 0x73A0 - 0x73DF.
+static bool is_rdna2(uint32_t vendor_id, uint32_t device_id) {
+    if (vendor_id != 0x1002) return false;
+    uint32_t lo = device_id & 0xFFF0;
+    return (lo >= 0x73A0 && lo <= 0x73DF);
+}
+
+// Load the right D3D12CreateDevice entry point at runtime:
+//   RDNA2 -> system d3d12.dll (Agility not supported)
+//   others -> Agility D3D12Core.dll when deployed, else system.
+static decltype(&D3D12CreateDevice) load_d3d12_create(uint32_t vendor_id, uint32_t device_id) {
+    static decltype(&D3D12CreateDevice) sys_fn = nullptr;
+    static decltype(&D3D12CreateDevice) ag_fn = nullptr;
+
+    if (!sys_fn) {
+        HMODULE m = LoadLibraryA("d3d12.dll");
+        if (m) sys_fn = reinterpret_cast<decltype(&D3D12CreateDevice)>((void*)GetProcAddress(m, "D3D12CreateDevice"));
+    }
+
+    if (is_rdna2(vendor_id, device_id)) {
+        // Agility not supported on RDNA2: always system d3d12.
+        return sys_fn;
+    }
+
+    if (!ag_fn) {
+        HMODULE m = LoadLibraryA("D3D12/D3D12Core.dll");
+        if (m) ag_fn = reinterpret_cast<decltype(&D3D12CreateDevice)>((void*)GetProcAddress(m, "D3D12CreateDevice"));
+    }
+    return ag_fn ? ag_fn : sys_fn;
+}
+
 // System D3D12 entry (no Agility). Used when the Agility DLL is absent.
 HRESULT system_d3d12_create_device(IDXGIAdapter1* adapter, ID3D12Device** out) {
     static decltype(&D3D12CreateDevice) fn = nullptr;
@@ -14,6 +45,15 @@ HRESULT system_d3d12_create_device(IDXGIAdapter1* adapter, ID3D12Device** out) {
         fn = reinterpret_cast<decltype(&D3D12CreateDevice)>((void*)GetProcAddress(m, "D3D12CreateDevice"));
         if (!fn) return E_FAIL;
     }
+    return fn(adapter, D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(out));
+}
+
+// Runtime arch-conditional device creation: RDNA2 -> system, else Agility.
+HRESULT arch_conditional_create_device(IDXGIAdapter1* adapter, ID3D12Device** out) {
+    DXGI_ADAPTER_DESC1 desc{};
+    if (FAILED(adapter->GetDesc1(&desc))) return E_FAIL;
+    auto fn = load_d3d12_create(desc.VendorId, desc.DeviceId);
+    if (!fn) return E_FAIL;
     return fn(adapter, D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(out));
 }
 
@@ -56,7 +96,7 @@ std::vector<AdapterCaps> Adapter::enumerate() {
         if (desc.Flags & DXGI_ADAPTER_FLAG_SOFTWARE) continue;
 
         ComPtr<ID3D12Device> test_device;
-        if (FAILED(system_d3d12_create_device(adapter.Get(), test_device.ReleaseAndGetAddressOf()))) continue;
+        if (FAILED(arch_conditional_create_device(adapter.Get(), test_device.ReleaseAndGetAddressOf()))) continue;
 
         AdapterCaps caps{};
         char name_buf[256] = {};

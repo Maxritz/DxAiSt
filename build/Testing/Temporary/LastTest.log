@@ -1,23 +1,27 @@
-Start testing: Aug 13 18:19 India Standard Time
+Start testing: Aug 13 18:48 India Standard Time
 ----------------------------------------------------------
 1/30 Testing: test_device_init
 1/30 Test: test_device_init
 Command: "F:/DXAiSt/build/Release/test_device_init.exe"
 Directory: F:/DXAiSt/build
-"test_device_init" start time: Aug 13 18:19 India Standard Time
+"test_device_init" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
-Found 1 D3D12 hardware adapters:
+Found 2 D3D12 hardware adapters:
+ - AMD Radeon RX 9070 XT (VRAM: 16188 MB)
+   Vendor ID: 0x1002 Device ID: 0x7550
+   Wave Min/Max: [32, 64], Preferred Wave: 32
+   WMMA Supported: YES, Dot4 Supported: YES
  - AMD Radeon RX 9070 XT (VRAM: 16188 MB)
    Vendor ID: 0x1002 Device ID: 0x7550
    Wave Min/Max: [32, 64], Preferred Wave: 32
    WMMA Supported: YES, Dot4 Supported: YES
 D3D12 Device successfully created!
 <end of output>
-Test time =   0.21 sec
+Test time =   0.30 sec
 ----------------------------------------------------------
 Test Passed.
-"test_device_init" end time: Aug 13 18:19 India Standard Time
+"test_device_init" end time: Aug 13 18:48 India Standard Time
 "test_device_init" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -25,15 +29,15 @@ Test Passed.
 2/30 Test: test_mem_alloc
 Command: "F:/DXAiSt/build/Release/test_mem_alloc.exe"
 Directory: F:/DXAiSt/build
-"test_mem_alloc" start time: Aug 13 18:19 India Standard Time
+"test_mem_alloc" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT Memory Allocation and Queue Fence Test Passed!
 <end of output>
-Test time =   0.21 sec
+Test time =   0.30 sec
 ----------------------------------------------------------
 Test Passed.
-"test_mem_alloc" end time: Aug 13 18:19 India Standard Time
+"test_mem_alloc" end time: Aug 13 18:48 India Standard Time
 "test_mem_alloc" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -41,15 +45,15 @@ Test Passed.
 3/30 Test: test_dxjit_blas
 Command: "F:/DXAiSt/build/Release/test_dxjit_blas.exe"
 Directory: F:/DXAiSt/build
-"test_dxjit_blas" start time: Aug 13 18:19 India Standard Time
+"test_dxjit_blas" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT JIT + BLAS Vector Add Compute Dispatch Passed Perfectly!
 <end of output>
-Test time =   0.25 sec
+Test time =   0.33 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxjit_blas" end time: Aug 13 18:19 India Standard Time
+"test_dxjit_blas" end time: Aug 13 18:48 India Standard Time
 "test_dxjit_blas" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -57,16 +61,16 @@ Test Passed.
 4/30 Test: test_substrate_full
 Command: "F:/DXAiSt/build/Release/test_substrate_full.exe"
 Directory: F:/DXAiSt/build
-"test_substrate_full" start time: Aug 13 18:19 India Standard Time
+"test_substrate_full" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 Q8_0 Quantization roundtrip max error: 0.0220437 PASSED
 DXAiT Full Substrate (Graph + Quant + KV + Barriers) Test Passed!
 <end of output>
-Test time =   0.23 sec
+Test time =   0.31 sec
 ----------------------------------------------------------
 Test Passed.
-"test_substrate_full" end time: Aug 13 18:19 India Standard Time
+"test_substrate_full" end time: Aug 13 18:48 India Standard Time
 "test_substrate_full" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -74,15 +78,15 @@ Test Passed.
 5/30 Test: test_model_inference
 Command: "F:/DXAiSt/build/Release/test_model_inference.exe"
 Directory: F:/DXAiSt/build
-"test_model_inference" start time: Aug 13 18:19 India Standard Time
+"test_model_inference" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT Full SDK Execution (Math Ops + RMSNorm + Softmax + Scheduler) Passed Perfectly!
 <end of output>
-Test time =   0.27 sec
+Test time =   0.34 sec
 ----------------------------------------------------------
 Test Passed.
-"test_model_inference" end time: Aug 13 18:19 India Standard Time
+"test_model_inference" end time: Aug 13 18:48 India Standard Time
 "test_model_inference" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -90,16 +94,16 @@ Test Passed.
 6/30 Test: test_attention_rand
 Command: "F:/DXAiSt/build/Release/test_attention_rand.exe"
 Directory: F:/DXAiSt/build
-"test_attention_rand" start time: Aug 13 18:19 India Standard Time
+"test_attention_rand" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 PCG32 GPU Random Generator Test PASSED
 DXAiT Attention SDPA + PRNG Test Passed!
 <end of output>
-Test time =   0.26 sec
+Test time =   0.39 sec
 ----------------------------------------------------------
 Test Passed.
-"test_attention_rand" end time: Aug 13 18:19 India Standard Time
+"test_attention_rand" end time: Aug 13 18:48 India Standard Time
 "test_attention_rand" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -107,16 +111,16 @@ Test Passed.
 7/30 Test: test_q4_quant
 Command: "F:/DXAiSt/build/Release/test_q4_quant.exe"
 Directory: F:/DXAiSt/build
-"test_q4_quant" start time: Aug 13 18:19 India Standard Time
+"test_q4_quant" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 Q4_0 Quantization roundtrip max error: 0.50121 PASSED
 Q4_0 GPU Dequantization Compute Dispatch PASSED
 <end of output>
-Test time =   0.24 sec
+Test time =   0.89 sec
 ----------------------------------------------------------
 Test Passed.
-"test_q4_quant" end time: Aug 13 18:19 India Standard Time
+"test_q4_quant" end time: Aug 13 18:48 India Standard Time
 "test_q4_quant" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -124,7 +128,7 @@ Test Passed.
 8/30 Test: test_model_formats
 Command: "F:/DXAiSt/build/Release/test_model_formats.exe"
 Directory: F:/DXAiSt/build
-"test_model_formats" start time: Aug 13 18:19 India Standard Time
+"test_model_formats" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 ========================================================
@@ -139,10 +143,10 @@ Output:
 --------------------------------------------------------
  All 4 Model Format Loaders Verified End-to-End!
 <end of output>
-Test time =   0.04 sec
+Test time =   0.06 sec
 ----------------------------------------------------------
 Test Passed.
-"test_model_formats" end time: Aug 13 18:19 India Standard Time
+"test_model_formats" end time: Aug 13 18:48 India Standard Time
 "test_model_formats" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -150,7 +154,7 @@ Test Passed.
 9/30 Test: test_streaming_sharding
 Command: "F:/DXAiSt/build/Release/test_streaming_sharding.exe"
 Directory: F:/DXAiSt/build
-"test_streaming_sharding" start time: Aug 13 18:19 India Standard Time
+"test_streaming_sharding" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 Disk-based Model Chunk Streaming PASSED
@@ -159,10 +163,10 @@ Advanced Hadamard Radix KV Cache PASSED
 Multi-GPU Collective Engine PASSED
 All Advanced Subsystems (Chunking, Sharding, Advanced KV Cache, Collectives) PASSED PERFECTLY!
 <end of output>
-Test time =   0.23 sec
+Test time =   0.63 sec
 ----------------------------------------------------------
 Test Passed.
-"test_streaming_sharding" end time: Aug 13 18:19 India Standard Time
+"test_streaming_sharding" end time: Aug 13 18:48 India Standard Time
 "test_streaming_sharding" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -170,7 +174,7 @@ Test Passed.
 10/30 Test: test_real_model_loading
 Command: "F:/DXAiSt/build/Release/test_real_model_loading.exe"
 Directory: F:/DXAiSt/build
-"test_real_model_loading" start time: Aug 13 18:19 India Standard Time
+"test_real_model_loading" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 ========================================================
@@ -179,10 +183,10 @@ Output:
 
 Real Model Weight Streaming to GPU VRAM Verification PASSED!
 <end of output>
-Test time =   0.22 sec
+Test time =   0.82 sec
 ----------------------------------------------------------
 Test Passed.
-"test_real_model_loading" end time: Aug 13 18:19 India Standard Time
+"test_real_model_loading" end time: Aug 13 18:48 India Standard Time
 "test_real_model_loading" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -190,7 +194,7 @@ Test Passed.
 11/30 Test: test_large_gguf_spillover
 Command: "F:/DXAiSt/build/Release/test_large_gguf_spillover.exe"
 Directory: F:/DXAiSt/build
-"test_large_gguf_spillover" start time: Aug 13 18:19 India Standard Time
+"test_large_gguf_spillover" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 ========================================================
@@ -203,34 +207,34 @@ Shared System RAM:       78569 MB
 
 1. Memory-mapping 18.68 GB GGUF model file...
 [DXAiT ModelLoader Engine] Parsed 833 tensors (Arch: transformer_gqa, AttentionType: 1) from E:\OLLAMA-Models\GGUF\Gemma-4-31B-Fable-5-Distill.q4_k_m.gguf
-   Memory-mapped 18.68 GB file in 61.0875 ms
+   Memory-mapped 18.68 GB file in 10.6727 ms
    Parsed 833 tensors!
 
 2. Streaming 14.0 GB of model tensors into Dedicated VRAM + System RAM...
-   Streamed Chunk [1/7] (2.0 GB) -> VRAM Handle 000002499E653680 in 1210.34 ms (1.65243 GB/s)
-   Streamed Chunk [2/7] (2.0 GB) -> VRAM Handle 00000249A68830C0 in 1010.11 ms (1.97998 GB/s)
-   Streamed Chunk [3/7] (2.0 GB) -> VRAM Handle 00000249A6883480 in 1012.94 ms (1.97445 GB/s)
-   Streamed Chunk [4/7] (2.0 GB) -> VRAM Handle 00000249A6883840 in 999.823 ms (2.00035 GB/s)
-   Streamed Chunk [5/7] (2.0 GB) -> VRAM Handle 00000249A6883C00 in 1018.82 ms (1.96306 GB/s)
-   Streamed Chunk [6/7] (2.0 GB) -> VRAM Handle 00000249A688A150 in 995.651 ms (2.00874 GB/s)
-   Streamed Chunk [7/7] (2.0 GB) -> VRAM Handle 00000249A688A510 in 997.238 ms (2.00554 GB/s)
+   Streamed Chunk [1/7] (2.0 GB) -> VRAM Handle 00000289A7C4EC30 in 1452.05 ms (1.37736 GB/s)
+   Streamed Chunk [2/7] (2.0 GB) -> VRAM Handle 00000289ADF5F610 in 1039.85 ms (1.92335 GB/s)
+   Streamed Chunk [3/7] (2.0 GB) -> VRAM Handle 00000289ADF5F9D0 in 1039.57 ms (1.92387 GB/s)
+   Streamed Chunk [4/7] (2.0 GB) -> VRAM Handle 00000289ADF5FD90 in 1049.1 ms (1.9064 GB/s)
+   Streamed Chunk [5/7] (2.0 GB) -> VRAM Handle 00000289ADF60150 in 1055.12 ms (1.89553 GB/s)
+   Streamed Chunk [6/7] (2.0 GB) -> VRAM Handle 00000289ADF68B50 in 1055.37 ms (1.89506 GB/s)
+   Streamed Chunk [7/7] (2.0 GB) -> VRAM Handle 0000028DB15084C0 in 1032.8 ms (1.93649 GB/s)
 
-   Total 14.0 GB Streaming Time: 7245.24 ms (1.9323 GB/s throughput)
+   Total 14.0 GB Streaming Time: 7724.17 ms (1.81249 GB/s throughput)
 ========================================================
  Full 18.68 GB GGUF Model Streaming & Residency Test PASSED!
 <end of output>
-Test time =   7.74 sec
+Test time =   8.29 sec
 ----------------------------------------------------------
 Test Passed.
-"test_large_gguf_spillover" end time: Aug 13 18:19 India Standard Time
-"test_large_gguf_spillover" time elapsed: 00:00:07
+"test_large_gguf_spillover" end time: Aug 13 18:48 India Standard Time
+"test_large_gguf_spillover" time elapsed: 00:00:08
 ----------------------------------------------------------
 
 12/30 Testing: test_50_50_offloading
 12/30 Test: test_50_50_offloading
 Command: "F:/DXAiSt/build/Release/test_50_50_offloading.exe"
 Directory: F:/DXAiSt/build
-"test_50_50_offloading" start time: Aug 13 18:19 India Standard Time
+"test_50_50_offloading" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 ========================================================
@@ -242,20 +246,20 @@ Dedicated VRAM Capacity:  16188 MB
 Shared System RAM:       78569 MB
 
 1. Allocating 256 MB in GPU Dedicated VRAM (D3D12_HEAP_TYPE_DEFAULT)...
-   VRAM Resource Handle: 0000023A5F5F04A0
+   VRAM Resource Handle: 000002289039FB80
 2. Allocating 256 MB in System RAM / ReBAR (D3D12_HEAP_TYPE_UPLOAD)...
-   RAM Resource Handle:  0000023A5F5F2590
+   RAM Resource Handle:  00000228903B0440
 3. Writing test payload to System RAM buffer...
 4. Issuing D3D12 COPY Queue CopyBufferRegion (System RAM -> Dedicated VRAM)...
-   PCIe DMA Copy Completed in 10.1001 ms (26.5775 GB/s throughput)!
+   PCIe DMA Copy Completed in 10.1679 ms (26.4003 GB/s throughput)!
 5. Copying Dedicated VRAM buffer back to Readback Heap for hardware verification...
 6. Hardware PCIe DMA Byte-for-Byte Verification PASSED!
 ========================================================
 <end of output>
-Test time =   0.33 sec
+Test time =   0.42 sec
 ----------------------------------------------------------
 Test Passed.
-"test_50_50_offloading" end time: Aug 13 18:19 India Standard Time
+"test_50_50_offloading" end time: Aug 13 18:48 India Standard Time
 "test_50_50_offloading" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -263,7 +267,7 @@ Test Passed.
 13/30 Test: test_sharding_perf
 Command: "F:/DXAiSt/build/Release/test_sharding_perf.exe"
 Directory: F:/DXAiSt/build
-"test_sharding_perf" start time: Aug 13 18:19 India Standard Time
+"test_sharding_perf" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 ========================================================
@@ -276,23 +280,23 @@ Shared System RAM:       78569 MB
 
 | Chunk Size (MB) | Num Chunks | Total MB | Time (ms) | Speed (GB/s) |
 |-----------------|------------|----------|-----------|--------------|
-|              32 |          8 |      256 |     146.0 |        1.713 |
-|              64 |          8 |      512 |     282.3 |        1.771 |
-|             128 |          8 |     1024 |     557.1 |        1.795 |
-|             256 |          8 |     2048 |    1107.8 |        1.805 |
-|             512 |          4 |     2048 |    1115.1 |        1.794 |
-|            1024 |          2 |     2048 |    1159.9 |        1.724 |
+|              32 |          8 |      256 |     145.3 |        1.721 |
+|              64 |          8 |      512 |     286.7 |        1.744 |
+|             128 |          8 |     1024 |     579.3 |        1.726 |
+|             256 |          8 |     2048 |    1110.5 |        1.801 |
+|             512 |          4 |     2048 |    1092.7 |        1.830 |
+|            1024 |          2 |     2048 |    1124.8 |        1.778 |
 
 ========================================================
  Optimal Chunk Size Result:
-   Optimal Chunk Granularity: 256 MB
-   Peak DMA Streaming Speed:  1.805 GB/s
+   Optimal Chunk Granularity: 512 MB
+   Peak DMA Streaming Speed:  1.830 GB/s
 ========================================================
 <end of output>
-Test time =   4.91 sec
+Test time =   4.93 sec
 ----------------------------------------------------------
 Test Passed.
-"test_sharding_perf" end time: Aug 13 18:19 India Standard Time
+"test_sharding_perf" end time: Aug 13 18:48 India Standard Time
 "test_sharding_perf" time elapsed: 00:00:04
 ----------------------------------------------------------
 
@@ -300,7 +304,7 @@ Test Passed.
 14/30 Test: test_split_load_inference
 Command: "F:/DXAiSt/build/Release/test_split_load_inference.exe"
 Directory: F:/DXAiSt/build
-"test_split_load_inference" start time: Aug 13 18:19 India Standard Time
+"test_split_load_inference" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 ========================================================
@@ -315,37 +319,37 @@ Shared System RAM:       78569 MB
    Successfully allocated and sharded 16 transformer layer tensors!
 
 2. Executing 16-Layer Split-Load Transformer Forward Pass...
-   [Layer  1/16] Location: Dedicated VRAM | Compute Latency: 29.095 ms
-   [Layer  2/16] Location: Dedicated VRAM | Compute Latency: 1.286 ms
-   [Layer  3/16] Location: Dedicated VRAM | Compute Latency: 1.091 ms
-   [Layer  4/16] Location: Dedicated VRAM | Compute Latency: 1.064 ms
-   [Layer  5/16] Location: Dedicated VRAM | Compute Latency: 1.065 ms
-   [Layer  6/16] Location: Dedicated VRAM | Compute Latency: 1.097 ms
-   [Layer  7/16] Location: Dedicated VRAM | Compute Latency: 1.080 ms
-   [Layer  8/16] Location: Dedicated VRAM | Compute Latency: 1.102 ms
-   [Layer  9/16] Location: Shared System RAM | Compute Latency: 1.212 ms
-   [Layer 10/16] Location: Shared System RAM | Compute Latency: 1.271 ms
-   [Layer 11/16] Location: Shared System RAM | Compute Latency: 1.061 ms
-   [Layer 12/16] Location: Shared System RAM | Compute Latency: 1.073 ms
-   [Layer 13/16] Location: Shared System RAM | Compute Latency: 1.075 ms
-   [Layer 14/16] Location: Shared System RAM | Compute Latency: 1.083 ms
-   [Layer 15/16] Location: Shared System RAM | Compute Latency: 1.086 ms
-   [Layer 16/16] Location: Shared System RAM | Compute Latency: 1.112 ms
+   [Layer  1/16] Location: Dedicated VRAM | Compute Latency: 12.441 ms
+   [Layer  2/16] Location: Dedicated VRAM | Compute Latency: 1.270 ms
+   [Layer  3/16] Location: Dedicated VRAM | Compute Latency: 1.070 ms
+   [Layer  4/16] Location: Dedicated VRAM | Compute Latency: 1.052 ms
+   [Layer  5/16] Location: Dedicated VRAM | Compute Latency: 1.066 ms
+   [Layer  6/16] Location: Dedicated VRAM | Compute Latency: 1.077 ms
+   [Layer  7/16] Location: Dedicated VRAM | Compute Latency: 1.110 ms
+   [Layer  8/16] Location: Dedicated VRAM | Compute Latency: 1.438 ms
+   [Layer  9/16] Location: Shared System RAM | Compute Latency: 1.158 ms
+   [Layer 10/16] Location: Shared System RAM | Compute Latency: 1.051 ms
+   [Layer 11/16] Location: Shared System RAM | Compute Latency: 1.053 ms
+   [Layer 12/16] Location: Shared System RAM | Compute Latency: 1.059 ms
+   [Layer 13/16] Location: Shared System RAM | Compute Latency: 1.063 ms
+   [Layer 14/16] Location: Shared System RAM | Compute Latency: 1.074 ms
+   [Layer 15/16] Location: Shared System RAM | Compute Latency: 1.157 ms
+   [Layer 16/16] Location: Shared System RAM | Compute Latency: 1.090 ms
 
    Sample Output Activation Token Vector [0..3]: 1.000, 1.000, 1.000, 1.000
 
 ========================================================
  Inference Harness Performance Summary:
    Total Layers Evaluated: 16 (8 VRAM + 8 System RAM)
-   Total Forward Pass:     45.96 ms
-   Avg Latency per Layer:  2.873 ms
+   Total Forward Pass:     29.36 ms
+   Avg Latency per Layer:  1.835 ms
 ========================================================
  Split-Load Model Inference Harness Test PASSED!
 <end of output>
-Test time =   0.33 sec
+Test time =   0.39 sec
 ----------------------------------------------------------
 Test Passed.
-"test_split_load_inference" end time: Aug 13 18:19 India Standard Time
+"test_split_load_inference" end time: Aug 13 18:48 India Standard Time
 "test_split_load_inference" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -353,7 +357,7 @@ Test Passed.
 15/30 Test: test_chat_inference_harness
 Command: "F:/DXAiSt/build/Release/test_chat_inference_harness.exe"
 Directory: F:/DXAiSt/build
-"test_chat_inference_harness" start time: Aug 13 18:19 India Standard Time
+"test_chat_inference_harness" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 ========================================================
@@ -373,39 +377,39 @@ Shared System RAM:       78569 MB
    Successfully allocated and sharded 16 transformer layer weights!
 
 3. Running Autoregressive Interactive Chat Generation (16 tokens)...
-   [Chat Token  1/16] Generated Token ID: 1000 | Decode Latency: 43.83 ms (22.8 tok/s)
-   [Chat Token  2/16] Generated Token ID: 1007 | Decode Latency: 15.24 ms (65.6 tok/s)
-   [Chat Token  3/16] Generated Token ID: 1014 | Decode Latency: 14.78 ms (67.7 tok/s)
-   [Chat Token  4/16] Generated Token ID: 1021 | Decode Latency: 15.51 ms (64.5 tok/s)
-   [Chat Token  5/16] Generated Token ID: 1028 | Decode Latency: 14.48 ms (69.1 tok/s)
-   [Chat Token  6/16] Generated Token ID: 1035 | Decode Latency: 14.61 ms (68.4 tok/s)
-   [Chat Token  7/16] Generated Token ID: 1042 | Decode Latency: 15.18 ms (65.9 tok/s)
-   [Chat Token  8/16] Generated Token ID: 1049 | Decode Latency: 14.65 ms (68.2 tok/s)
-   [Chat Token  9/16] Generated Token ID: 1056 | Decode Latency: 15.29 ms (65.4 tok/s)
-   [Chat Token 10/16] Generated Token ID: 1063 | Decode Latency: 15.01 ms (66.6 tok/s)
-   [Chat Token 11/16] Generated Token ID: 1070 | Decode Latency: 15.02 ms (66.6 tok/s)
-   [Chat Token 12/16] Generated Token ID: 1077 | Decode Latency: 14.86 ms (67.3 tok/s)
-   [Chat Token 13/16] Generated Token ID: 1084 | Decode Latency: 14.74 ms (67.8 tok/s)
-   [Chat Token 14/16] Generated Token ID: 1091 | Decode Latency: 15.06 ms (66.4 tok/s)
-   [Chat Token 15/16] Generated Token ID: 1098 | Decode Latency: 15.43 ms (64.8 tok/s)
-   [Chat Token 16/16] Generated Token ID: 1105 | Decode Latency: 15.56 ms (64.3 tok/s)
-[MARK] map done ptr=000001B930AD2000
+   [Chat Token  1/16] Generated Token ID: 1000 | Decode Latency: 28.39 ms (35.2 tok/s)
+   [Chat Token  2/16] Generated Token ID: 1007 | Decode Latency: 15.47 ms (64.6 tok/s)
+   [Chat Token  3/16] Generated Token ID: 1014 | Decode Latency: 14.51 ms (68.9 tok/s)
+   [Chat Token  4/16] Generated Token ID: 1021 | Decode Latency: 14.81 ms (67.5 tok/s)
+   [Chat Token  5/16] Generated Token ID: 1028 | Decode Latency: 14.56 ms (68.7 tok/s)
+   [Chat Token  6/16] Generated Token ID: 1035 | Decode Latency: 14.63 ms (68.3 tok/s)
+   [Chat Token  7/16] Generated Token ID: 1042 | Decode Latency: 14.74 ms (67.8 tok/s)
+   [Chat Token  8/16] Generated Token ID: 1049 | Decode Latency: 14.86 ms (67.3 tok/s)
+   [Chat Token  9/16] Generated Token ID: 1056 | Decode Latency: 14.68 ms (68.1 tok/s)
+   [Chat Token 10/16] Generated Token ID: 1063 | Decode Latency: 14.69 ms (68.1 tok/s)
+   [Chat Token 11/16] Generated Token ID: 1070 | Decode Latency: 14.71 ms (68.0 tok/s)
+   [Chat Token 12/16] Generated Token ID: 1077 | Decode Latency: 14.59 ms (68.6 tok/s)
+   [Chat Token 13/16] Generated Token ID: 1084 | Decode Latency: 14.62 ms (68.4 tok/s)
+   [Chat Token 14/16] Generated Token ID: 1091 | Decode Latency: 14.99 ms (66.7 tok/s)
+   [Chat Token 15/16] Generated Token ID: 1098 | Decode Latency: 14.55 ms (68.7 tok/s)
+   [Chat Token 16/16] Generated Token ID: 1105 | Decode Latency: 14.88 ms (67.2 tok/s)
+[MARK] map done ptr=0000012E3F9DA000
 
    Final Output Activation Token Vector [0..3]: 0.0, 0.0, 0.0, 0.0
 
 ========================================================
  Chat Interactive Harness Performance Summary:
    Total Tokens Generated:  16
-   Total Generation Time:   269.65 ms
-   Avg Latency per Token:   16.85 ms/token
-   Decode Throughput:       59.3 tokens/sec
+   Total Generation Time:   249.98 ms
+   Avg Latency per Token:   15.62 ms/token
+   Decode Throughput:       64.0 tokens/sec
 ========================================================
  128K Long-Context Split-Load Chat Harness Test PASSED!
 <end of output>
-Test time =   0.64 sec
+Test time =   0.69 sec
 ----------------------------------------------------------
 Test Passed.
-"test_chat_inference_harness" end time: Aug 13 18:19 India Standard Time
+"test_chat_inference_harness" end time: Aug 13 18:48 India Standard Time
 "test_chat_inference_harness" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -413,7 +417,7 @@ Test Passed.
 16/30 Test: test_512k_rag_mcp
 Command: "F:/DXAiSt/build/Release/test_512k_rag_mcp.exe"
 Directory: F:/DXAiSt/build
-"test_512k_rag_mcp" start time: Aug 13 18:19 India Standard Time
+"test_512k_rag_mcp" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 ========================================================
@@ -453,10 +457,10 @@ Shared System RAM:       78569 MB
 ========================================================
  512K Context, FastRetrieveDB RAG & MCP Server Test PASSED!
 <end of output>
-Test time =   0.38 sec
+Test time =   0.46 sec
 ----------------------------------------------------------
 Test Passed.
-"test_512k_rag_mcp" end time: Aug 13 18:19 India Standard Time
+"test_512k_rag_mcp" end time: Aug 13 18:48 India Standard Time
 "test_512k_rag_mcp" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -464,7 +468,7 @@ Test Passed.
 17/30 Test: test_dxnetwork
 Command: "F:/DXAiSt/build/Release/test_dxnetwork.exe"
 Directory: F:/DXAiSt/build
-"test_dxnetwork" start time: Aug 13 18:19 India Standard Time
+"test_dxnetwork" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 ========================================================
@@ -501,10 +505,10 @@ Dedicated VRAM Capacity:  16188 MB
 ========================================================
  Secure & Insecure DirectX Network Transport Test PASSED!
 <end of output>
-Test time =   0.22 sec
+Test time =   0.29 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxnetwork" end time: Aug 13 18:19 India Standard Time
+"test_dxnetwork" end time: Aug 13 18:48 India Standard Time
 "test_dxnetwork" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -512,7 +516,7 @@ Test Passed.
 18/30 Test: test_dxtriton
 Command: "F:/DXAiSt/build/Release/test_dxtriton.exe"
 Directory: F:/DXAiSt/build
-"test_dxtriton" start time: Aug 13 18:19 India Standard Time
+"test_dxtriton" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 ========================================================
@@ -534,10 +538,10 @@ Preferred Wave Size:     Wave64
 ========================================================
  AITER / Triton-JIT HLSL Compiler Engine Test PASSED!
 <end of output>
-Test time =   0.24 sec
+Test time =   0.32 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxtriton" end time: Aug 13 18:19 India Standard Time
+"test_dxtriton" end time: Aug 13 18:48 India Standard Time
 "test_dxtriton" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -545,7 +549,7 @@ Test Passed.
 19/30 Test: test_dxfft
 Command: "F:/DXAiSt/build/Release/test_dxfft.exe"
 Directory: F:/DXAiSt/build
-"test_dxfft" start time: Aug 13 18:19 India Standard Time
+"test_dxfft" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT Radix2 FFT Verification Suite
@@ -564,10 +568,10 @@ Running FFT on impulse signal (n=8)...
 
 Result: FFT impulse test PASSED (all ones, imag zero)
 <end of output>
-Test time =   0.24 sec
+Test time =   0.34 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxfft" end time: Aug 13 18:19 India Standard Time
+"test_dxfft" end time: Aug 13 18:48 India Standard Time
 "test_dxfft" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -575,7 +579,7 @@ Test Passed.
 20/30 Test: test_dxcache
 Command: "F:/DXAiSt/build/Release/test_dxcache.exe"
 Directory: F:/DXAiSt/build
-"test_dxcache" start time: Aug 13 18:19 India Standard Time
+"test_dxcache" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT AdvancedKVCache Hadamard Transform Test
@@ -589,10 +593,10 @@ Applying hadamard transform to [1,2,3,4]...
 
 Result: Hadamard transform PASSED
 <end of output>
-Test time =   0.26 sec
+Test time =   0.30 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxcache" end time: Aug 13 18:19 India Standard Time
+"test_dxcache" end time: Aug 13 18:48 India Standard Time
 "test_dxcache" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -600,7 +604,7 @@ Test Passed.
 21/30 Test: test_dxspeculative
 Command: "F:/DXAiSt/build/Release/test_dxspeculative.exe"
 Directory: F:/DXAiSt/build
-"test_dxspeculative" start time: Aug 13 18:19 India Standard Time
+"test_dxspeculative" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT Speculative Decoding Verification Test
@@ -620,10 +624,10 @@ Case 2: target P(draft)=0. Expect all rejected.
 
 Result: Speculative verification PASSED
 <end of output>
-Test time =   0.24 sec
+Test time =   0.31 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxspeculative" end time: Aug 13 18:19 India Standard Time
+"test_dxspeculative" end time: Aug 13 18:48 India Standard Time
 "test_dxspeculative" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -631,7 +635,7 @@ Test Passed.
 22/30 Test: test_dxgraph
 Command: "F:/DXAiSt/build/Release/test_dxgraph.exe"
 Directory: F:/DXAiSt/build
-"test_dxgraph" start time: Aug 13 18:19 India Standard Time
+"test_dxgraph" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT CommandGraph Topological Sort Test
@@ -642,10 +646,10 @@ Invalid dependency threw: yes
 
 Result: CommandGraph PASSED
 <end of output>
-Test time =   0.21 sec
+Test time =   0.29 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxgraph" end time: Aug 13 18:19 India Standard Time
+"test_dxgraph" end time: Aug 13 18:48 India Standard Time
 "test_dxgraph" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -653,7 +657,7 @@ Test Passed.
 23/30 Test: test_dxtrace
 Command: "F:/DXAiSt/build/Release/test_dxtrace.exe"
 Directory: F:/DXAiSt/build
-"test_dxtrace" start time: Aug 13 18:19 India Standard Time
+"test_dxtrace" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT Trace Marker Smoke Test
@@ -664,10 +668,10 @@ Recorded and executed command list with markers.
 
 Result: Trace marker smoke test PASSED
 <end of output>
-Test time =   0.21 sec
+Test time =   0.28 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxtrace" end time: Aug 13 18:19 India Standard Time
+"test_dxtrace" end time: Aug 13 18:48 India Standard Time
 "test_dxtrace" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -675,7 +679,7 @@ Test Passed.
 24/30 Test: test_blas_gemm
 Command: "F:/DXAiSt/build/Release/test_blas_gemm.exe"
 Directory: F:/DXAiSt/build
-"test_blas_gemm" start time: Aug 13 18:19 India Standard Time
+"test_blas_gemm" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT CUTLASS-style Tiled GEMM Test
@@ -691,10 +695,10 @@ Dispatching F16 dot2add GEMM 32x32x32...
   F16 max abs error = 260.796875
 Result: F16 dot2add GEMM PASSED
 <end of output>
-Test time =   0.21 sec
+Test time =   0.32 sec
 ----------------------------------------------------------
 Test Passed.
-"test_blas_gemm" end time: Aug 13 18:20 India Standard Time
+"test_blas_gemm" end time: Aug 13 18:48 India Standard Time
 "test_blas_gemm" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -702,7 +706,7 @@ Test Passed.
 25/30 Test: test_attention_variants
 Command: "F:/DXAiSt/build/Release/test_attention_variants.exe"
 Directory: F:/DXAiSt/build
-"test_attention_variants" start time: Aug 13 18:20 India Standard Time
+"test_attention_variants" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT Attention Mechanism Variants Test (MHA / GQA / MQA / SWA)
@@ -717,10 +721,10 @@ DXAiT Attention Mechanism Variants Test (MHA / GQA / MQA / SWA)
 
 Result: Attention variants PASSED
 <end of output>
-Test time =   0.34 sec
+Test time =   0.33 sec
 ----------------------------------------------------------
 Test Passed.
-"test_attention_variants" end time: Aug 13 18:20 India Standard Time
+"test_attention_variants" end time: Aug 13 18:48 India Standard Time
 "test_attention_variants" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -728,7 +732,7 @@ Test Passed.
 26/30 Test: test_attn_paged
 Command: "F:/DXAiSt/build/Release/test_attn_paged.exe"
 Directory: F:/DXAiSt/build
-"test_attn_paged" start time: Aug 13 18:20 India Standard Time
+"test_attn_paged" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT PagedAttention Block-Table Test
@@ -738,10 +742,10 @@ DXAiT PagedAttention Block-Table Test
 
 Result: PagedAttention PASSED
 <end of output>
-Test time =   0.27 sec
+Test time =   0.32 sec
 ----------------------------------------------------------
 Test Passed.
-"test_attn_paged" end time: Aug 13 18:20 India Standard Time
+"test_attn_paged" end time: Aug 13 18:48 India Standard Time
 "test_attn_paged" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -749,7 +753,7 @@ Test Passed.
 27/30 Test: test_attn_h2o
 Command: "F:/DXAiSt/build/Release/test_attn_h2o.exe"
 Directory: F:/DXAiSt/build
-"test_attn_h2o" start time: Aug 13 18:20 India Standard Time
+"test_attn_h2o" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT Heavy-Hitter H2O Attention Test
@@ -759,10 +763,10 @@ DXAiT Heavy-Hitter H2O Attention Test
 
 Result: H2O Attention PASSED
 <end of output>
-Test time =   0.26 sec
+Test time =   0.31 sec
 ----------------------------------------------------------
 Test Passed.
-"test_attn_h2o" end time: Aug 13 18:20 India Standard Time
+"test_attn_h2o" end time: Aug 13 18:48 India Standard Time
 "test_attn_h2o" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -770,7 +774,7 @@ Test Passed.
 28/30 Test: test_attn_chunked
 Command: "F:/DXAiSt/build/Release/test_attn_chunked.exe"
 Directory: F:/DXAiSt/build
-"test_attn_chunked" start time: Aug 13 18:20 India Standard Time
+"test_attn_chunked" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT ChunkedPrefill Test
@@ -780,10 +784,10 @@ DXAiT ChunkedPrefill Test
 
 Result: ChunkedPrefill PASSED
 <end of output>
-Test time =   0.26 sec
+Test time =   0.31 sec
 ----------------------------------------------------------
 Test Passed.
-"test_attn_chunked" end time: Aug 13 18:20 India Standard Time
+"test_attn_chunked" end time: Aug 13 18:48 India Standard Time
 "test_attn_chunked" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -791,7 +795,7 @@ Test Passed.
 29/30 Test: test_attn_ring
 Command: "F:/DXAiSt/build/Release/test_attn_ring.exe"
 Directory: F:/DXAiSt/build
-"test_attn_ring" start time: Aug 13 18:20 India Standard Time
+"test_attn_ring" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT RingAttention (single-GPU) Test
@@ -801,10 +805,10 @@ DXAiT RingAttention (single-GPU) Test
 
 Result: RingAttention PASSED
 <end of output>
-Test time =   0.25 sec
+Test time =   0.31 sec
 ----------------------------------------------------------
 Test Passed.
-"test_attn_ring" end time: Aug 13 18:20 India Standard Time
+"test_attn_ring" end time: Aug 13 18:48 India Standard Time
 "test_attn_ring" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -812,20 +816,23 @@ Test Passed.
 30/30 Test: test_attn_ring_multi
 Command: "F:/DXAiSt/build/Release/test_attn_ring_multi.exe"
 Directory: F:/DXAiSt/build
-"test_attn_ring_multi" start time: Aug 13 18:20 India Standard Time
+"test_attn_ring_multi" start time: Aug 13 18:48 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT Multi-GPU RingAttention Test
 ==================================
 
-Need >= 2 GPU adapters, found 1. Skipping multi-GPU ring test.
-Result: SKIPPED (single adapter)
+[DXAiT RingAttention] Ran 2 device-local flash attention shards (seq 4 each).
+  device[0] output finite: yes (o[0]=0.1000)
+  device[1] output finite: yes (o[0]=0.2200)
+
+Result: Multi-GPU RingAttention shard execution PASSED
 <end of output>
-Test time =   0.14 sec
+Test time =   0.46 sec
 ----------------------------------------------------------
 Test Passed.
-"test_attn_ring_multi" end time: Aug 13 18:20 India Standard Time
+"test_attn_ring_multi" end time: Aug 13 18:48 India Standard Time
 "test_attn_ring_multi" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Aug 13 18:20 India Standard Time
+End testing: Aug 13 18:48 India Standard Time

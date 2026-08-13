@@ -1,0 +1,112 @@
+#include "dxait/dxblas.hpp"
+
+namespace dxait {
+
+static const char g_vec_add_hlsl[] = R"(
+RWStructuredBuffer<float> g_out : register(u0);
+StructuredBuffer<float> g_in1 : register(t0);
+StructuredBuffer<float> g_in2 : register(t1);
+
+cbuffer ElementwiseCB : register(b0) {
+    uint g_count;
+    float g_alpha;
+    float g_beta;
+    uint g_pad;
+};
+
+[numthreads(64, 1, 1)]
+void vec_add(uint3 id : SV_DispatchThreadID) {
+    if (id.x < g_count) {
+        g_out[id.x] = g_alpha * g_in1[id.x] + g_beta * g_in2[id.x];
+    }
+}
+)";
+
+BLAS::BLAS(Device* device)
+    : m_device(device), m_pso_cache(device->get()) {
+    init_root_signature();
+
+    if (FAILED(device->get()->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_COMPUTE, IID_PPV_ARGS(&m_cmd_alloc)))) {
+        throw std::runtime_error("Failed to create compute command allocator");
+    }
+    if (FAILED(device->get()->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_COMPUTE, m_cmd_alloc.Get(), nullptr, IID_PPV_ARGS(&m_cmd_list)))) {
+        throw std::runtime_error("Failed to create compute command list");
+    }
+    m_cmd_list->Close();
+}
+
+void BLAS::init_root_signature() {
+    D3D12_ROOT_PARAMETER params[4]{};
+
+    // Root parameter 0: Constant Buffer (CBV)
+    params[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_32BIT_CONSTANTS;
+    params[0].Constants.ShaderRegister = 0;
+    params[0].Constants.RegisterSpace = 0;
+    params[0].Constants.Num32BitValues = 4;
+    params[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+
+    // Root parameter 1: UAV (Out Buffer)
+    params[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_UAV;
+    params[1].Descriptor.ShaderRegister = 0;
+    params[1].Descriptor.RegisterSpace = 0;
+    params[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+
+    // Root parameter 2: SRV (In1 Buffer)
+    params[2].ParameterType = D3D12_ROOT_PARAMETER_TYPE_SRV;
+    params[2].Descriptor.ShaderRegister = 0;
+    params[2].Descriptor.RegisterSpace = 0;
+    params[2].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+
+    // Root parameter 3: SRV (In2 Buffer)
+    params[3].ParameterType = D3D12_ROOT_PARAMETER_TYPE_SRV;
+    params[3].Descriptor.ShaderRegister = 1;
+    params[3].Descriptor.RegisterSpace = 0;
+    params[3].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+
+    D3D12_ROOT_SIGNATURE_DESC desc{};
+    desc.NumParameters = 4;
+    desc.pParameters = params;
+    desc.Flags = D3D12_ROOT_SIGNATURE_FLAG_NONE;
+
+    ShaderCompiler compiler;
+    m_root_sig = compiler.create_root_signature(m_device->get(), desc);
+}
+
+void BLAS::vec_add(
+    Queue* queue,
+    Buffer* out_buf,
+    Buffer* in1_buf,
+    Buffer* in2_buf,
+    uint32_t count,
+    float alpha,
+    float beta
+) {
+    auto pso = m_pso_cache.get_or_compile("vec_add", g_vec_add_hlsl, m_root_sig.Get(), L"vec_add");
+
+    m_cmd_alloc->Reset();
+    m_cmd_list->Reset(m_cmd_alloc.Get(), pso.Get());
+
+    m_cmd_list->SetComputeRootSignature(m_root_sig.Get());
+
+    struct CB {
+        uint32_t count;
+        float alpha;
+        float beta;
+        uint32_t pad;
+    } cb{count, alpha, beta, 0};
+
+    m_cmd_list->SetComputeRoot32BitConstants(0, 4, &cb, 0);
+    m_cmd_list->SetComputeRootUnorderedAccessView(1, out_buf->get()->GetGPUVirtualAddress());
+    m_cmd_list->SetComputeRootShaderResourceView(2, in1_buf->get()->GetGPUVirtualAddress());
+    m_cmd_list->SetComputeRootShaderResourceView(3, in2_buf->get()->GetGPUVirtualAddress());
+
+    uint32_t dispatch_x = (count + 63) / 64;
+    m_cmd_list->Dispatch(dispatch_x, 1, 1);
+
+    m_cmd_list->Close();
+
+    ID3D12CommandList* lists[] = { m_cmd_list.Get() };
+    queue->execute(lists, 1);
+}
+
+} // namespace dxait

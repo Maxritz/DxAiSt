@@ -1,0 +1,20 @@
+test_device_init 57 0.00461146
+test_mem_alloc 57 0.00410137
+test_dxjit_blas 51 0.00619493
+test_substrate_full 51 0.00452365
+test_model_inference 48 0.00659179
+test_attention_rand 45 0.00735072
+test_q4_quant 42 0.00683198
+test_model_formats 40 0.000288763
+test_streaming_sharding 26 0.00942479
+test_real_model_loading 21 0.0111199
+test_large_gguf_spillover 12 1.29681
+test_50_50_offloading 9 0.045172
+test_sharding_perf 8 1.10343
+test_split_load_inference 7 0.289509
+test_chat_inference_harness 1 0
+test_512k_rag_mcp 6 0.0664997
+test_dxnetwork 4 0.0633043
+test_dxtriton 4 0.093603
+---
+test_chat_inference_harness

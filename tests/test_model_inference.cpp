@@ -51,7 +51,7 @@ int main() {
     fence->wait(1);
 
     // Verify Softmax
-    math.softmax(compute_queue.get(), out_softmax_readback.get(), in_upload.get(), num_rows, row_dim);
+    math.softmax(compute_queue.get(), out_softmax_readback.get(), in_upload.get(), num_rows, row_dim, 1.0f);
     compute_queue->signal(*fence, 2);
     fence->wait(2);
 

@@ -102,6 +102,10 @@ bool ModelLoader::load_file(const std::string& filepath) {
         return parse_safetensors(filepath);
     } else if (filepath.rfind(".pte") != std::string::npos) {
         return parse_pte(filepath);
+    } else if (filepath.rfind(".onnx") != std::string::npos) {
+        return parse_onnx(filepath);
+    } else if (filepath.rfind(".bin") != std::string::npos || filepath.rfind(".pt") != std::string::npos) {
+        return parse_pytorch_bin(filepath);
     }
     return parse_gguf(filepath);
 }
@@ -208,8 +212,11 @@ bool ModelLoader::parse_pytorch_bin(const std::string& filepath) {
 }
 
 bool ModelLoader::parse_onnx(const std::string& filepath) {
-    (void)filepath;
+    MemoryMappedFile mmap(filepath);
+    if (!mmap.is_valid() || mmap.size() < 8) return false;
     m_format = ModelFormat::ONNX;
+    m_arch_config.arch_name = "onnx_transformer";
+    m_arch_config.attention_type = AttentionType::MHA;
     return true;
 }
 

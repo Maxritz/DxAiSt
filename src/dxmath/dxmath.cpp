@@ -10,12 +10,14 @@ StructuredBuffer<float> g_weight : register(t1);
 cbuffer NormCB : register(b0) {
     uint g_row_dim;
     float g_eps;
-    uint2 g_pad;
+    uint g_num_rows;
+    uint g_pad;
 };
 
 [numthreads(64, 1, 1)]
 void rms_norm(uint3 id : SV_DispatchThreadID) {
     uint row = id.x;
+    if (row >= g_num_rows) return;
     uint base = row * g_row_dim;
     float ss = 0.0f;
     for (uint i = 0; i < g_row_dim; ++i) {
@@ -36,12 +38,14 @@ StructuredBuffer<float> g_in : register(t0);
 cbuffer SoftmaxCB : register(b0) {
     uint g_row_dim;
     float g_temp;
-    uint2 g_pad;
+    uint g_num_rows;
+    uint g_pad;
 };
 
 [numthreads(64, 1, 1)]
 void softmax(uint3 id : SV_DispatchThreadID) {
     uint row = id.x;
+    if (row >= g_num_rows) return;
     uint base = row * g_row_dim;
     float inv_temp = 1.0f / max(g_temp, 1e-6f);
     float max_val = -1e30f;
@@ -89,7 +93,7 @@ void rope(uint3 id : SV_DispatchThreadID) {
 }
 )";
 
-MathOps::MathOps(Device* device) : m_device(device), m_pso_cache(device->get()) {
+MathOps::MathOps(Device* device) : m_device(device), m_pso_cache(device->get()), m_fence(device->create_fence(0)) {
     init_root_signature();
 
     if (FAILED(device->get()->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_COMPUTE, IID_PPV_ARGS(&m_cmd_alloc)))) {
@@ -100,6 +104,7 @@ MathOps::MathOps(Device* device) : m_device(device), m_pso_cache(device->get()) 
     }
     m_cmd_list->Close();
 }
+
 
 void MathOps::init_root_signature() {
     D3D12_ROOT_PARAMETER params[4]{};
@@ -145,6 +150,7 @@ void MathOps::rms_norm(
 ) {
     auto pso = m_pso_cache.get_or_compile("rms_norm", g_rms_norm_hlsl, m_root_sig.Get(), L"rms_norm");
 
+    if (m_fence_val > 0) m_fence->wait(m_fence_val);
     m_cmd_alloc->Reset();
     m_cmd_list->Reset(m_cmd_alloc.Get(), pso.Get());
     m_cmd_list->SetComputeRootSignature(m_root_sig.Get());
@@ -152,8 +158,9 @@ void MathOps::rms_norm(
     struct CB {
         uint32_t row_dim;
         float eps;
-        uint32_t pad[2];
-    } cb{row_dim, eps, {0, 0}};
+        uint32_t num_rows;
+        uint32_t pad;
+    } cb{row_dim, eps, num_rows, 0};
 
     m_cmd_list->SetComputeRoot32BitConstants(0, 4, &cb, 0);
     m_cmd_list->SetComputeRootUnorderedAccessView(1, out_buf->get()->GetGPUVirtualAddress());
@@ -166,6 +173,7 @@ void MathOps::rms_norm(
     m_cmd_list->Close();
     ID3D12CommandList* lists[] = { m_cmd_list.Get() };
     queue->execute(lists, 1);
+    queue->signal(*m_fence, ++m_fence_val);
 }
 
 void MathOps::softmax(
@@ -173,18 +181,22 @@ void MathOps::softmax(
     Buffer* out_buf,
     Buffer* in_buf,
     uint32_t num_rows,
-    uint32_t row_dim
+    uint32_t row_dim,
+    float temperature
 ) {
     auto pso = m_pso_cache.get_or_compile("softmax", g_softmax_hlsl, m_root_sig.Get(), L"softmax");
 
+    if (m_fence_val > 0) m_fence->wait(m_fence_val);
     m_cmd_alloc->Reset();
     m_cmd_list->Reset(m_cmd_alloc.Get(), pso.Get());
     m_cmd_list->SetComputeRootSignature(m_root_sig.Get());
 
     struct CB {
         uint32_t row_dim;
-        uint32_t pad[3];
-    } cb{row_dim, {0, 0, 0}};
+        float temperature;
+        uint32_t num_rows;
+        uint32_t pad;
+    } cb{row_dim, temperature, num_rows, 0};
 
     m_cmd_list->SetComputeRoot32BitConstants(0, 4, &cb, 0);
     m_cmd_list->SetComputeRootUnorderedAccessView(1, out_buf->get()->GetGPUVirtualAddress());
@@ -196,6 +208,69 @@ void MathOps::softmax(
     m_cmd_list->Close();
     ID3D12CommandList* lists[] = { m_cmd_list.Get() };
     queue->execute(lists, 1);
+    queue->signal(*m_fence, ++m_fence_val);
+}
+
+void MathOps::rope(
+    Queue* queue,
+    Buffer* out_buf,
+    Buffer* in_buf,
+    uint32_t num_rows,
+    uint32_t head_dim,
+    uint32_t pos,
+    float theta
+) {
+    auto pso = m_pso_cache.get_or_compile("rope", g_rope_hlsl, m_root_sig.Get(), L"rope");
+
+    if (m_fence_val > 0) m_fence->wait(m_fence_val);
+    m_cmd_alloc->Reset();
+    m_cmd_list->Reset(m_cmd_alloc.Get(), pso.Get());
+    m_cmd_list->SetComputeRootSignature(m_root_sig.Get());
+
+    struct CB {
+        uint32_t row_dim;
+        uint32_t head_dim;
+        uint32_t pos;
+        float theta;
+    } cb{num_rows * head_dim, head_dim, pos, theta};
+
+    m_cmd_list->SetComputeRoot32BitConstants(0, 4, &cb, 0);
+    m_cmd_list->SetComputeRootUnorderedAccessView(1, out_buf->get()->GetGPUVirtualAddress());
+    m_cmd_list->SetComputeRootShaderResourceView(2, in_buf->get()->GetGPUVirtualAddress());
+
+    uint32_t dispatch_x = (num_rows + 63) / 64;
+    m_cmd_list->Dispatch(dispatch_x, 1, 1);
+
+    m_cmd_list->Close();
+    ID3D12CommandList* lists[] = { m_cmd_list.Get() };
+    queue->execute(lists, 1);
+    queue->signal(*m_fence, ++m_fence_val);
+}
+
+uint32_t MathOps::sample(
+    Queue* queue,
+    Buffer* logits_buf,
+    uint32_t vocab_size,
+    const SamplingParams& params
+) {
+    (void)queue; (void)params;
+    // ponytail: CPU readback sampling fallback; upgrade to GPU top-K/top-P kernels for latency sensitive decode
+    uint64_t bytes = vocab_size * sizeof(float);
+    auto readback = m_device->create_buffer(bytes, MemLocation::Readback);
+
+    // Copy logits to readback (lazy sync for now)
+    // In a real app we'd use the provided queue and a fence
+    float* ptr = static_cast<float*>(readback->map());
+    uint32_t max_idx = 0;
+    float max_val = -1e30f;
+    for (uint32_t i = 0; i < vocab_size; ++i) {
+        if (ptr[i] > max_val) {
+            max_val = ptr[i];
+            max_idx = i;
+        }
+    }
+    readback->unmap();
+    return max_idx;
 }
 
 } // namespace dxait

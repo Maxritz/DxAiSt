@@ -96,7 +96,7 @@ int main() {
         // 16-Layer Forward Pass for token_idx
         for (uint32_t l = 0; l < num_layers; ++l) {
             math.rms_norm(compute_queue.get(), act_output.get(), act_input.get(), layer_tensors[l].get(), num_rows, row_dim);
-            math.softmax(compute_queue.get(), act_output.get(), act_output.get(), num_rows, row_dim);
+            math.softmax(compute_queue.get(), act_output.get(), act_output.get(), num_rows, row_dim, 1.0f);
         }
 
         // Ingest generated token into 128k Long-Context Engine
@@ -117,8 +117,12 @@ int main() {
     double tok_per_sec = 1000.0 / avg_tok_ms;
 
     // Verify Readback
+    auto fence = device->create_fence(0);
+    compute_queue->signal(*fence, 1);
+    fence->wait(1);
     offloader.page_swap(copy_queue.get(), act_output.get(), act_readback.get(), tensor_bytes);
     float* out_ptr = static_cast<float*>(act_readback->map());
+    std::cerr << "[MARK] map done ptr=" << (void*)out_ptr << "\n";
     std::cout << "\n   Final Output Activation Token Vector [0..3]: "
               << out_ptr[0] << ", " << out_ptr[1] << ", " << out_ptr[2] << ", " << out_ptr[3] << "\n";
     act_readback->unmap();

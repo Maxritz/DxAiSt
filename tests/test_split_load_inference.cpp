@@ -96,7 +96,7 @@ int main() {
         math.rms_norm(compute_queue.get(), act_output.get(), act_input.get(), active_tensor, num_rows, row_dim);
 
         // Dispatch Softmax activation
-        math.softmax(compute_queue.get(), act_output.get(), act_output.get(), num_rows, row_dim);
+            math.softmax(compute_queue.get(), act_output.get(), act_output.get(), num_rows, row_dim, 1.0f);
 
         auto layer_t1 = std::chrono::high_resolution_clock::now();
         double layer_ms = std::chrono::duration<double, std::milli>(layer_t1 - layer_t0).count();

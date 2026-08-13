@@ -23,16 +23,37 @@
       <FullPath>F:\DXAiSt\build\Release\test_attention_rand.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_attention_variants.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_blas_gemm.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
       <FullPath>F:\DXAiSt\build\Release\test_chat_inference_harness.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
       <FullPath>F:\DXAiSt\build\Release\test_device_init.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_dxcache.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_dxfft.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_dxgraph.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
       <FullPath>F:\DXAiSt\build\Release\test_dxjit_blas.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
       <FullPath>F:\DXAiSt\build\Release\test_dxnetwork.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_dxspeculative.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>F:\DXAiSt\build\Release\test_dxtrace.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
       <FullPath>F:\DXAiSt\build\Release\test_dxtriton.exe</FullPath>

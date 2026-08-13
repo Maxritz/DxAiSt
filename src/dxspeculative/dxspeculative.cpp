@@ -2,7 +2,7 @@
 
 namespace dxait {
 
-SpeculativeEngine::SpeculativeEngine(Device* device) : m_device(device), m_pso_cache(device->get()) {
+SpeculativeEngine::SpeculativeEngine(Device* device) : m_device(device), m_pso_cache(device->get()), m_fence(device->create_fence(0)) {
     init_root_signature();
 
     if (FAILED(device->get()->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_COMPUTE, IID_PPV_ARGS(&m_cmd_alloc)))) {
@@ -79,12 +79,21 @@ void SpeculativeEngine::verify_draft_tokens(
     void speculative_verify_kernel(uint3 id : SV_DispatchThreadID) {
         uint token_idx = id.x;
         if (token_idx >= g_num_draft_tokens) return;
-        g_accept_mask[token_idx] = 1;
+
+        // Speculative acceptance rule (Leviathan et al.):
+        // accept draft token t if r <= min(1, p_target(t) / p_draft(t))
+        uint tok = g_draft_tokens[token_idx];
+        float p_target = tok < g_vocab_size ? g_target_probs[tok] : 0.0f;
+        float p_draft  = tok < g_vocab_size ? g_draft_probs[tok]  : 0.0f;
+        float ratio = p_draft > 1e-12f ? (p_target / p_draft) : 0.0f;
+        float r = g_random_val;
+        g_accept_mask[token_idx] = (r <= ratio) ? 1u : 0u;
     }
     )";
 
     auto pso = m_pso_cache.get_or_compile("speculative_verify", hlsl_src, m_root_sig.Get(), L"speculative_verify_kernel");
 
+    if (m_fence_val > 0) m_fence->wait(m_fence_val);
     m_cmd_alloc->Reset();
     m_cmd_list->Reset(m_cmd_alloc.Get(), pso.Get());
     m_cmd_list->SetComputeRootSignature(m_root_sig.Get());
@@ -108,6 +117,7 @@ void SpeculativeEngine::verify_draft_tokens(
     m_cmd_list->Close();
     ID3D12CommandList* lists[] = { m_cmd_list.Get() };
     queue->execute(lists, 1);
+    queue->signal(*m_fence, ++m_fence_val);
 }
 
 } // namespace dxait

@@ -141,6 +141,34 @@ add_executable(test_dxtriton tests/test_dxtriton.cpp)
 target_link_libraries(test_dxtriton PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
 add_test(NAME test_dxtriton COMMAND test_dxtriton)
 
+add_executable(test_dxfft tests/test_dxfft.cpp)
+target_link_libraries(test_dxfft PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_dxfft COMMAND test_dxfft)
+
+add_executable(test_dxcache tests/test_dxcache.cpp)
+target_link_libraries(test_dxcache PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_dxcache COMMAND test_dxcache)
+
+add_executable(test_dxspeculative tests/test_dxspeculative.cpp)
+target_link_libraries(test_dxspeculative PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_dxspeculative COMMAND test_dxspeculative)
+
+add_executable(test_dxgraph tests/test_dxgraph.cpp)
+target_link_libraries(test_dxgraph PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_dxgraph COMMAND test_dxgraph)
+
+add_executable(test_dxtrace tests/test_dxtrace.cpp)
+target_link_libraries(test_dxtrace PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_dxtrace COMMAND test_dxtrace)
+
+add_executable(test_blas_gemm tests/test_blas_gemm.cpp)
+target_link_libraries(test_blas_gemm PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_blas_gemm COMMAND test_blas_gemm)
+
+add_executable(test_attention_variants tests/test_attention_variants.cpp)
+target_link_libraries(test_attention_variants PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_attention_variants COMMAND test_attention_variants)
+
 # Tool targets
 add_executable(dxinspect tools/dxinspect/main.cpp)
 target_link_libraries(dxinspect PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib)

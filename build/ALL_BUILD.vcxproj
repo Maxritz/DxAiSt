@@ -201,6 +201,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{19D796B6-16EA-3811-9E4B-956AA6A7A13B}</Project>
       <Name>test_attention_rand</Name>
     </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_attention_variants.vcxproj">
+      <Project>{C9E13DB4-0B28-37DC-8041-EB650CFAAF9A}</Project>
+      <Name>test_attention_variants</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_blas_gemm.vcxproj">
+      <Project>{196050C1-FE86-3E30-AF10-A7C0EE3E21B4}</Project>
+      <Name>test_blas_gemm</Name>
+    </ProjectReference>
     <ProjectReference Include="F:\DXAiSt\build\test_chat_inference_harness.vcxproj">
       <Project>{7B8C0A5F-A890-3D8C-A03F-F440E8CB73FA}</Project>
       <Name>test_chat_inference_harness</Name>
@@ -209,6 +217,18 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{B1234625-E1A6-3D9E-BFA9-C8DC197D389C}</Project>
       <Name>test_device_init</Name>
     </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_dxcache.vcxproj">
+      <Project>{8DE233EB-6F72-3C8D-9B4F-A30B6B664389}</Project>
+      <Name>test_dxcache</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_dxfft.vcxproj">
+      <Project>{705581CF-9D0F-3A55-9C52-1DDA4A619D2F}</Project>
+      <Name>test_dxfft</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_dxgraph.vcxproj">
+      <Project>{30E69931-B547-32C4-8801-3AA17FA26097}</Project>
+      <Name>test_dxgraph</Name>
+    </ProjectReference>
     <ProjectReference Include="F:\DXAiSt\build\test_dxjit_blas.vcxproj">
       <Project>{4EB5CB87-D7AA-3A72-A417-59F928B393A8}</Project>
       <Name>test_dxjit_blas</Name>
@@ -216,6 +236,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="F:\DXAiSt\build\test_dxnetwork.vcxproj">
       <Project>{67256ED5-59E0-34A2-B737-36BEA8929C9C}</Project>
       <Name>test_dxnetwork</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_dxspeculative.vcxproj">
+      <Project>{877623DF-D4AC-33AB-8E2B-47A2517D1BB1}</Project>
+      <Name>test_dxspeculative</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\DXAiSt\build\test_dxtrace.vcxproj">
+      <Project>{92E947B6-CF83-383D-86C4-8473976E5F9F}</Project>
+      <Name>test_dxtrace</Name>
     </ProjectReference>
     <ProjectReference Include="F:\DXAiSt\build\test_dxtriton.vcxproj">
       <Project>{06B405F4-54C4-38F9-8370-0DE0AF731CD2}</Project>

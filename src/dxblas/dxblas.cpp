@@ -22,8 +22,51 @@ void vec_add(uint3 id : SV_DispatchThreadID) {
 }
 )";
 
+static const char g_gemm_tiled_hlsl[] = R"(
+RWStructuredBuffer<float> g_out : register(u0);
+StructuredBuffer<float> g_a : register(t0);
+StructuredBuffer<float> g_b : register(t1);
+
+cbuffer GemmCB : register(b0) {
+    uint g_M;
+    uint g_N;
+    uint g_K;
+    uint g_pad;
+};
+
+#define TILE 16
+groupshared float s_a[TILE][TILE];
+groupshared float s_b[TILE][TILE];
+
+[numthreads(TILE, TILE, 1)]
+void gemm_tiled(uint3 id : SV_DispatchThreadID, uint3 gid : SV_GroupID, uint ltid : SV_GroupIndex) {
+    uint tx = ltid % TILE;
+    uint ty = ltid / TILE;
+    uint row = gid.y * TILE + ty;
+    uint col = gid.x * TILE + tx;
+    if (row >= g_M || col >= g_N) return;
+
+    float acc = 0.0f;
+    for (uint kk = 0; kk < g_K; kk += TILE) {
+        // cooperative load A and B tiles into shared memory
+        uint ak = kk + tx; // for A: k index
+        uint bk = kk + ty; // for B: k index
+        s_a[ty][tx] = (row < g_M && ak < g_K) ? g_a[row * g_K + ak] : 0.0f;
+        s_b[ty][tx] = (bk < g_K && col < g_N) ? g_b[bk * g_N + col] : 0.0f;
+        GroupMemoryBarrierWithGroupSync();
+
+        // compute inner product over this k-tile
+        for (uint k = 0; k < TILE; ++k) {
+            acc += s_a[ty][k] * s_b[k][tx];
+        }
+        GroupMemoryBarrierWithGroupSync();
+    }
+    g_out[row * g_N + col] = acc;
+}
+)";
+
 BLAS::BLAS(Device* device)
-    : m_device(device), m_pso_cache(device->get()) {
+    : m_device(device), m_pso_cache(device->get()), m_fence(device->create_fence(0)) {
     init_root_signature();
 
     if (FAILED(device->get()->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_COMPUTE, IID_PPV_ARGS(&m_cmd_alloc)))) {
@@ -107,6 +150,42 @@ void BLAS::vec_add(
 
     ID3D12CommandList* lists[] = { m_cmd_list.Get() };
     queue->execute(lists, 1);
+}
+
+void BLAS::gemm(
+    Queue* queue,
+    Buffer* out_buf,
+    Buffer* in_a,
+    Buffer* in_b,
+    uint32_t M,
+    uint32_t N,
+    uint32_t K
+) {
+    auto pso = m_pso_cache.get_or_compile("gemm_tiled", g_gemm_tiled_hlsl, m_root_sig.Get(), L"gemm_tiled");
+
+    if (m_fence_val > 0) m_fence->wait(m_fence_val);
+    m_cmd_alloc->Reset();
+    m_cmd_list->Reset(m_cmd_alloc.Get(), pso.Get());
+    m_cmd_list->SetComputeRootSignature(m_root_sig.Get());
+
+    struct CB {
+        uint32_t M, N, K, pad;
+    } cb{M, N, K, 0};
+
+    m_cmd_list->SetComputeRoot32BitConstants(0, 4, &cb, 0);
+    m_cmd_list->SetComputeRootUnorderedAccessView(1, out_buf->get()->GetGPUVirtualAddress());
+    m_cmd_list->SetComputeRootShaderResourceView(2, in_a->get()->GetGPUVirtualAddress());
+    m_cmd_list->SetComputeRootShaderResourceView(3, in_b->get()->GetGPUVirtualAddress());
+
+    uint32_t grid_x = (N + 15) / 16;
+    uint32_t grid_y = (M + 15) / 16;
+    m_cmd_list->Dispatch(grid_x, grid_y, 1);
+
+    m_cmd_list->Close();
+
+    ID3D12CommandList* lists[] = { m_cmd_list.Get() };
+    queue->execute(lists, 1);
+    queue->signal(*m_fence, ++m_fence_val);
 }
 
 } // namespace dxait

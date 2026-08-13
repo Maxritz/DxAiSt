@@ -5,6 +5,8 @@
 #include <functional>
 #include <vector>
 #include <memory>
+#include <queue>
+#include <string>
 
 namespace dxait {
 
@@ -26,9 +28,13 @@ public:
     void compile();
     void execute(Queue* queue);
 
+    const std::vector<uint32_t>& execution_order() const { return m_order; }
+    bool is_compiled() const { return m_compiled; }
+
 private:
     Device* m_device;
     std::vector<GraphNode> m_nodes;
+    std::vector<uint32_t> m_order;
     ComPtr<ID3D12CommandAllocator> m_cmd_alloc;
     ComPtr<ID3D12GraphicsCommandList> m_cmd_list;
     bool m_compiled{false};

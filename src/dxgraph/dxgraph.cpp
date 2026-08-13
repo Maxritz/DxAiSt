@@ -22,14 +22,37 @@ uint32_t CommandGraph::add_node(const std::string& name, NodeFunc func, const st
 }
 
 void CommandGraph::compile() {
-    // Topological sort validation
+    // Kahn's algorithm: real topological order, throws on cycles or bad deps.
     std::vector<uint32_t> in_degree(m_nodes.size(), 0);
+    std::vector<std::vector<uint32_t>> adj(m_nodes.size());
+
     for (const auto& node : m_nodes) {
         for (uint32_t dep : node.dependencies) {
             if (dep >= m_nodes.size()) {
                 throw std::runtime_error("Invalid dependency node ID");
             }
+            adj[dep].push_back(node.id);
+            in_degree[node.id]++;
         }
+    }
+
+    std::queue<uint32_t> ready;
+    for (uint32_t i = 0; i < m_nodes.size(); ++i) {
+        if (in_degree[i] == 0) ready.push(i);
+    }
+
+    m_order.clear();
+    while (!ready.empty()) {
+        uint32_t id = ready.front();
+        ready.pop();
+        m_order.push_back(id);
+        for (uint32_t next : adj[id]) {
+            if (--in_degree[next] == 0) ready.push(next);
+        }
+    }
+
+    if (m_order.size() != m_nodes.size()) {
+        throw std::runtime_error("CommandGraph contains a cycle");
     }
     m_compiled = true;
 }
@@ -40,8 +63,9 @@ void CommandGraph::execute(Queue* queue) {
     m_cmd_alloc->Reset();
     m_cmd_list->Reset(m_cmd_alloc.Get(), nullptr);
 
-    for (const auto& node : m_nodes) {
-        node.func(m_cmd_list.Get());
+    // Execute nodes in topological order (dependency first).
+    for (uint32_t id : m_order) {
+        m_nodes[id].func(m_cmd_list.Get());
     }
 
     m_cmd_list->Close();

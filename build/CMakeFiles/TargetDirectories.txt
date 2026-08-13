@@ -17,6 +17,13 @@ F:/DXAiSt/build/CMakeFiles/test_chat_inference_harness.dir
 F:/DXAiSt/build/CMakeFiles/test_512k_rag_mcp.dir
 F:/DXAiSt/build/CMakeFiles/test_dxnetwork.dir
 F:/DXAiSt/build/CMakeFiles/test_dxtriton.dir
+F:/DXAiSt/build/CMakeFiles/test_dxfft.dir
+F:/DXAiSt/build/CMakeFiles/test_dxcache.dir
+F:/DXAiSt/build/CMakeFiles/test_dxspeculative.dir
+F:/DXAiSt/build/CMakeFiles/test_dxgraph.dir
+F:/DXAiSt/build/CMakeFiles/test_dxtrace.dir
+F:/DXAiSt/build/CMakeFiles/test_blas_gemm.dir
+F:/DXAiSt/build/CMakeFiles/test_attention_variants.dir
 F:/DXAiSt/build/CMakeFiles/dxinspect.dir
 F:/DXAiSt/build/CMakeFiles/dxbench.dir
 F:/DXAiSt/build/CMakeFiles/dxmodelinfo.dir

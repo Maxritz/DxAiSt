@@ -28,10 +28,7 @@ enum class TensorDataType {
 enum class ModelFormat {
     Unknown = 0,
     GGUF,
-    Safetensors,
-    PTE,
-    PyTorchBin,
-    ONNX
+    Safetensors
 };
 
 enum class AttentionType {
@@ -73,9 +70,6 @@ public:
     bool load_file(const std::string& filepath);
     bool parse_gguf(const std::string& filepath);
     bool parse_safetensors(const std::string& filepath);
-    bool parse_pte(const std::string& filepath);
-    bool parse_pytorch_bin(const std::string& filepath);
-    bool parse_onnx(const std::string& filepath);
 
     ModelFormat format() const { return m_format; }
     const ModelArchConfig& arch_config() const { return m_arch_config; }

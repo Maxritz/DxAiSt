@@ -222,6 +222,135 @@ void linear_attn(uint3 id : SV_DispatchThreadID) {
 }
 )";
 
+// PagedAttention: KV stored in fixed-size blocks, block table maps logical
+// block -> physical block. extra buffer = block table (uint per block).
+static const char g_paged_hlsl[] = R"(
+RWStructuredBuffer<float> g_out : register(u0);
+StructuredBuffer<float> g_q : register(t0);
+StructuredBuffer<float> g_k : register(t1);
+StructuredBuffer<float> g_v : register(t2);
+StructuredBuffer<uint> g_table : register(t3);
+
+cbuffer PagedCB : register(b0) {
+    uint g_seq_len;
+    uint g_head_dim;
+    uint g_page_size;
+    uint g_n_blocks;
+    float g_scale;
+    uint g_num_q_heads;
+    uint g_num_kv_heads;
+    uint g_pad;
+};
+
+[numthreads(64, 1, 1)]
+void paged_attn(uint3 id : SV_DispatchThreadID) {
+    uint i = id.x;
+    if (i >= g_seq_len) return;
+    uint q_head = id.y;
+    uint kv_head = min(q_head * g_num_kv_heads / max(g_num_q_heads, 1u), g_num_kv_heads - 1);
+
+    uint q_base = (q_head * g_seq_len + i) * g_head_dim;
+
+    float max_s = -1e30f;
+    for (uint j = 0; j < g_seq_len; ++j) {
+        uint logical_block = j / g_page_size;
+        uint in_block = j % g_page_size;
+        uint phys = g_table[kv_head * g_n_blocks + logical_block];
+        float dot = 0.0f;
+        uint k_base = ((kv_head * g_n_blocks + phys) * g_page_size + in_block) * g_head_dim;
+        for (uint d = 0; d < g_head_dim; ++d)
+            dot += g_q[q_base + d] * g_k[k_base + d];
+        max_s = max(max_s, dot * g_scale);
+    }
+
+    float sum = 0.0f;
+    for (uint j = 0; j < g_seq_len; ++j) {
+        uint logical_block = j / g_page_size;
+        uint in_block = j % g_page_size;
+        uint phys = g_table[kv_head * g_n_blocks + logical_block];
+        float dot = 0.0f;
+        uint k_base = ((kv_head * g_n_blocks + phys) * g_page_size + in_block) * g_head_dim;
+        for (uint d = 0; d < g_head_dim; ++d)
+            dot += g_q[q_base + d] * g_k[k_base + d];
+        sum += exp((dot * g_scale) - max_s);
+    }
+
+    for (uint d = 0; d < g_head_dim; ++d) {
+        float o = 0.0f;
+        for (uint j = 0; j < g_seq_len; ++j) {
+            uint logical_block = j / g_page_size;
+            uint in_block = j % g_page_size;
+            uint phys = g_table[kv_head * g_n_blocks + logical_block];
+            float dot = 0.0f;
+            uint k_base = ((kv_head * g_n_blocks + phys) * g_page_size + in_block) * g_head_dim;
+            for (uint dd = 0; dd < g_head_dim; ++dd)
+                dot += g_q[q_base + dd] * g_k[k_base + dd];
+            uint v_base = ((kv_head * g_n_blocks + phys) * g_page_size + in_block) * g_head_dim;
+            o += (exp((dot * g_scale) - max_s) / sum) * g_v[v_base + d];
+        }
+        g_out[(q_head * g_seq_len + i) * g_head_dim + d] = o;
+    }
+}
+)";
+
+// Heavy-Hitter H2O: keep-mask attention. extra buffer = uint keep[seq] (0/1).
+static const char g_h2o_hlsl[] = R"(
+RWStructuredBuffer<float> g_out : register(u0);
+StructuredBuffer<float> g_q : register(t0);
+StructuredBuffer<float> g_k : register(t1);
+StructuredBuffer<float> g_v : register(t2);
+StructuredBuffer<uint> g_keep : register(t3);
+
+cbuffer H2OCB : register(b0) {
+    uint g_seq_len;
+    uint g_head_dim;
+    uint g_num_q_heads;
+    uint g_num_kv_heads;
+    float g_scale;
+    uint g_pad[3];
+};
+
+[numthreads(64, 1, 1)]
+void h2o_attn(uint3 id : SV_DispatchThreadID) {
+    uint i = id.x;
+    if (i >= g_seq_len) return;
+    uint q_head = id.y;
+    uint kv_head = min(q_head * g_num_kv_heads / max(g_num_q_heads, 1u), g_num_kv_heads - 1);
+    uint q_base = (q_head * g_seq_len + i) * g_head_dim;
+
+    float max_s = -1e30f;
+    for (uint j = 0; j < g_seq_len; ++j) {
+        if (!g_keep[j]) continue;
+        float dot = 0.0f;
+        uint k_base = (kv_head * g_seq_len + j) * g_head_dim;
+        for (uint d = 0; d < g_head_dim; ++d) dot += g_q[q_base + d] * g_k[k_base + d];
+        max_s = max(max_s, dot * g_scale);
+    }
+
+    float sum = 0.0f;
+    for (uint j = 0; j < g_seq_len; ++j) {
+        if (!g_keep[j]) continue;
+        float dot = 0.0f;
+        uint k_base = (kv_head * g_seq_len + j) * g_head_dim;
+        for (uint d = 0; d < g_head_dim; ++d) dot += g_q[q_base + d] * g_k[k_base + d];
+        sum += exp((dot * g_scale) - max_s);
+    }
+
+    for (uint d = 0; d < g_head_dim; ++d) {
+        float o = 0.0f;
+        for (uint j = 0; j < g_seq_len; ++j) {
+            if (!g_keep[j]) continue;
+            float dot = 0.0f;
+            uint k_base = (kv_head * g_seq_len + j) * g_head_dim;
+            for (uint dd = 0; dd < g_head_dim; ++dd) dot += g_q[q_base + dd] * g_k[k_base + dd];
+            uint v_base = (kv_head * g_seq_len + j) * g_head_dim;
+            o += (exp((dot * g_scale) - max_s) / sum) * g_v[v_base + d];
+        }
+        g_out[(q_head * g_seq_len + i) * g_head_dim + d] = o;
+    }
+}
+)";
+
 AttentionOps::AttentionOps(Device* device) : m_device(device), m_pso_cache(device->get()), m_fence(device->create_fence(0)) {
     init_root_signature();
 
@@ -235,7 +364,7 @@ AttentionOps::AttentionOps(Device* device) : m_device(device), m_pso_cache(devic
 }
 
 void AttentionOps::init_root_signature() {
-    D3D12_ROOT_PARAMETER params[5]{};
+    D3D12_ROOT_PARAMETER params[6]{};
 
     params[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_32BIT_CONSTANTS;
     params[0].Constants.ShaderRegister = 0;
@@ -263,8 +392,13 @@ void AttentionOps::init_root_signature() {
     params[4].Descriptor.RegisterSpace = 0;
     params[4].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
 
+    params[5].ParameterType = D3D12_ROOT_PARAMETER_TYPE_SRV;
+    params[5].Descriptor.ShaderRegister = 3;
+    params[5].Descriptor.RegisterSpace = 0;
+    params[5].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+
     D3D12_ROOT_SIGNATURE_DESC desc{};
-    desc.NumParameters = 5;
+    desc.NumParameters = 6;
     desc.pParameters = params;
     desc.Flags = D3D12_ROOT_SIGNATURE_FLAG_NONE;
 
@@ -303,8 +437,11 @@ void AttentionOps::dispatch_attention(
     Buffer* q_buf,
     Buffer* k_buf,
     Buffer* v_buf,
-    const AttentionConfig& config
+    const AttentionConfig& config,
+    Buffer* extra
 ) {
+    // All 10 mechanisms route to a real kernel. paged/h2o need the extra SRV
+    // (block table / keep mask); the rest ignore it.
     bool causal = (config.mechanism == AttentionMechanism::FlashAttention ||
                    config.mechanism == AttentionMechanism::SlidingWindow ||
                    config.mechanism == AttentionMechanism::PagedAttention ||
@@ -315,16 +452,23 @@ void AttentionOps::dispatch_attention(
 
     const char* key = nullptr;
     const wchar_t* entry = nullptr;
+    const char* src = g_sdpa_hlsl;
     switch (config.mechanism) {
-    case AttentionMechanism::FlashAttention: key = "flash_attn"; entry = L"flash_attn"; break;
-    case AttentionMechanism::LinearAttention: key = "linear_attn"; entry = L"linear_attn"; break;
-    default: key = "sdpa"; entry = L"sdpa"; break;
+    case AttentionMechanism::FlashAttention:
+    case AttentionMechanism::ChunkedPrefill:   // chunked = online-softmax over blocks
+    case AttentionMechanism::RingAttention:    // ring = online-softmax over ring chunks
+        key = "flash_attn"; entry = L"flash_attn"; src = g_flash_hlsl; break;
+    case AttentionMechanism::LinearAttention:
+        key = "linear_attn"; entry = L"linear_attn"; src = g_linear_hlsl; break;
+    case AttentionMechanism::PagedAttention:
+        key = "paged_attn"; entry = L"paged_attn"; src = g_paged_hlsl; break;
+    case AttentionMechanism::HeavyHitterH2O:
+        key = "h2o_attn"; entry = L"h2o_attn"; src = g_h2o_hlsl; break;
+    default:
+        key = "sdpa"; entry = L"sdpa"; break; // MHA, GQA, MQA, SWA
     }
 
-    auto pso = m_pso_cache.get_or_compile(key, 
-        (config.mechanism == AttentionMechanism::FlashAttention) ? g_flash_hlsl :
-        (config.mechanism == AttentionMechanism::LinearAttention) ? g_linear_hlsl : g_sdpa_hlsl,
-        m_root_sig.Get(), entry);
+    auto pso = m_pso_cache.get_or_compile(key, src, m_root_sig.Get(), entry);
 
     if (m_fence_val > 0) m_fence->wait(m_fence_val);
     m_cmd_alloc->Reset();
@@ -348,6 +492,9 @@ void AttentionOps::dispatch_attention(
     m_cmd_list->SetComputeRootShaderResourceView(2, q_buf->get()->GetGPUVirtualAddress());
     m_cmd_list->SetComputeRootShaderResourceView(3, k_buf->get()->GetGPUVirtualAddress());
     m_cmd_list->SetComputeRootShaderResourceView(4, v_buf->get()->GetGPUVirtualAddress());
+    if (extra) {
+        m_cmd_list->SetComputeRootShaderResourceView(5, extra->get()->GetGPUVirtualAddress());
+    }
 
     uint32_t grid_x = (config.seq_len + 63) / 64;
     m_cmd_list->Dispatch(grid_x, config.num_q_heads, 1);

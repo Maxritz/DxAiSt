@@ -19,15 +19,12 @@ void inspect_path(const std::string& path_str) {
     for (const auto& entry : fs::recursive_directory_iterator(path_str, fs::directory_options::skip_permission_denied)) {
         if (!entry.is_regular_file()) continue;
         std::string ext = entry.path().extension().string();
-        if (ext == ".gguf" || ext == ".safetensors" || ext == ".pte" || ext == ".onnx" || ext == ".bin") {
+        if (ext == ".gguf" || ext == ".safetensors") {
             std::string filepath = entry.path().string();
             if (loader.load_file(filepath)) {
                 std::string fmt_name = "Unknown";
                 if (loader.format() == dxait::ModelFormat::GGUF) fmt_name = "GGUF";
                 else if (loader.format() == dxait::ModelFormat::Safetensors) fmt_name = "Safetensors";
-                else if (loader.format() == dxait::ModelFormat::PTE) fmt_name = "PyTorch (.pte)";
-                else if (loader.format() == dxait::ModelFormat::ONNX) fmt_name = "ONNX";
-                else if (loader.format() == dxait::ModelFormat::PyTorchBin) fmt_name = "PyTorch (.bin)";
 
                 std::cout << "  - " << entry.path().filename().string() << " [" << fmt_name << "]\n";
                 count++;

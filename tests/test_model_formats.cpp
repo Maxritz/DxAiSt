@@ -27,7 +27,7 @@ int main() {
         std::cerr << "GGUF loader failed\n";
         return -1;
     }
-    std::cout << "[1/4] GGUF v3 Model Loader:               PASSED\n";
+    std::cout << "[1/2] GGUF v3 Model Loader:               PASSED\n";
 
     // 2. Safetensors Model File Test
     {
@@ -42,35 +42,9 @@ int main() {
         std::cerr << "Safetensors loader failed\n";
         return -1;
     }
-    std::cout << "[2/4] Safetensors Model Loader:          PASSED\n";
-
-    // 3. PyTorch Executable (.pte) Model File Test
-    {
-        std::ofstream out("test_model.pte", std::ios::binary);
-        char header[16] = {'P','T','E','1','_','F','L','A','T','B','U','F','F','E','R'};
-        out.write(header, 16);
-    }
-    dxait::ModelLoader pte_loader;
-    if (!pte_loader.load_file("test_model.pte") || pte_loader.format() != dxait::ModelFormat::PTE) {
-        std::cerr << "PTE loader failed\n";
-        return -1;
-    }
-    std::cout << "[3/4] PyTorch Export (.pte) Model Loader:PASSED\n";
-
-    // 4. ONNX Protobuf Model File Test
-    {
-        std::ofstream out("test_model.onnx", std::ios::binary);
-        char header[8] = {'\x08','\x01','\x12','\x04','O','N','N','X'};
-        out.write(header, 8);
-    }
-    dxait::ModelLoader onnx_loader;
-    if (!onnx_loader.load_file("test_model.onnx") || onnx_loader.format() != dxait::ModelFormat::ONNX) {
-        std::cerr << "ONNX loader failed\n";
-        return -1;
-    }
-    std::cout << "[4/4] ONNX Protobuf Model Loader:          PASSED\n";
+    std::cout << "[2/2] Safetensors Model Loader:          PASSED\n";
 
     std::cout << "--------------------------------------------------------\n";
-    std::cout << " All 4 Model Format Loaders Verified End-to-End!\n";
+    std::cout << " All 2 Model Format Loaders Verified End-to-End!\n";
     return 0;
 }

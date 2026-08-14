@@ -50,14 +50,16 @@ public:
         float scale
     );
 
-    // 2. Comprehensive Master Attention Dispatcher (MHA, GQA, MQA, FlashAttn, PagedAttn, SWA, RingAttn)
+    // 2. Comprehensive Master Attention Dispatcher (MHA, GQA, MQA, FlashAttn, PagedAttn, SWA, RingAttn, H2O, ChunkedPrefill)
+    // extra = block table (PagedAttention) or keep mask (H2O); nullptr otherwise.
     void dispatch_attention(
         Queue* queue,
         Buffer* out_buf,
         Buffer* q_buf,
         Buffer* k_buf,
         Buffer* v_buf,
-        const AttentionConfig& config
+        const AttentionConfig& config,
+        Buffer* extra = nullptr
     );
 
 private:

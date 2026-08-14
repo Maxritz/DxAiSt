@@ -158,7 +158,7 @@ This project stands on the shoulders of a lot of published work and open source 
 - The authors of the attention mechanism papers that shaped the attention module: Vaswani et al. (Attention Is All You Need), Shazeer (Multi Query Attention), Ainslie et al. (Grouped Query Attention), DeepSeek AI (Multi Head Latent Attention in DeepSeek V2), Dao et al. (FlashAttention), Kwon et al. (PagedAttention), Beltagy et al. (Longformer sliding window), Katharopoulos et al. (Linear Attention), and the speculative decoding work of Leviathan et al.
 - The llama.cpp project, whose GGUF format, quantization schemes and overall approach to running LLMs on modest hardware are a constant reference and source of inspiration.
 - Microsoft for the DirectX 12 API, the Agility SDK, DXC compiler and DirectStorage, all of which are the backbone of this toolkit.
-- AMD for the RDNA2 and RDNA4 architecture documentation, and for the hardware this project is tuned and tested against (RX 6700 XT and RX 9070 XT).
+- AMD for the RDNA2 and RDNA4 architecture documentation.
 
 ## Over engineering audit summary
 

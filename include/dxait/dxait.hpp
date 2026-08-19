@@ -44,12 +44,16 @@ enum class MemLocation {
 
 enum class ArchitectureFamily {
     Unknown = 0,
-    AMD_RDNA2, // Wave32/64 capable, sdot4/sudot4, v_dot2, no WMMA. GEMV prefers Wave64.
-    AMD_RDNA3, // Wave32, WMMA capable.
-    AMD_RDNA4, // Wave32 native, WMMA capable (BEST_FATTN_KERNEL_MMA_F16 optimized).
-    NVIDIA_Ampere_Ada_Blackwell, // Wave32, Tensor Cores.
-    Intel_Arc_Xe // Wave16/32, XMX.
+    AMD_RDNA2, //Wave32/64 capable, sdot4/sudot4, v_dot2; Wave64 preferred for GEMV
+    AMD_RDNA3, //Wave32, WMMA capable
+    AMD_RDNA4, //Wave32 native, WMMA capable (MMA_F16 preferred decode)
+    NVIDIA_Ampere_Ada_Blackwell, //Wave32, Tensor Cores
+    Intel_Arc_Xe //Wave16/32, XMX
 };
+
+//Classify vendor/device into ArchitectureFamily by device ID (not wave counts,
+//which RDNA4 shares with RDNA2). Used by Device for wmma / dot4 / wave selection.
+ArchitectureFamily classify_gpu_architecture(uint32_t vendor_id, uint32_t device_id);
 
 struct AdapterCaps {
     std::string name;

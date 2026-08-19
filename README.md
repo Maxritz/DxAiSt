@@ -21,15 +21,11 @@ The toolkit targets consumer and workstation AMD GPUs in particular, with tuned 
 
 ## Module tree
 
-Each folder under `src/` is one module, with a matching header under `include/dxait/`. The C-ABI wrapper (`dx_capi`) was removed — it had zero callers.
+Each folder under `src/` is one module. Most have a matching header under `include/dxait/`; the core runtime types (`Adapter`, `Device`, `Queue`, `Buffer`, `Fence`) are declared in `dxait.hpp`, and `dxadapter` / `dxruntime` / `dxqueue` / `dxmem` ship as source without a separate header. The C-ABI wrapper (`dx_capi`) was removed — it had zero callers.
 
 ```
 include/dxait/
-├── dxait.hpp          core types: AdapterCaps, Device, Queue, Buffer, Fence, TDRGuard, Config
-├── dxadapter.hpp      GPU enumeration, vendor/device classification, wave size detection
-├── dxruntime.hpp      device creation (arch-conditional: RDNA2=system, RDNA4=Agility), TDRGuard
-├── dxqueue.hpp        command queue + fence helpers
-├── dxmem.hpp          buffer allocation across Default / Upload / Readback / ReBAR heaps
+├── dxait.hpp          core types: AdapterCaps, Adapter, Device, Queue, Buffer, Fence, TDRGuard, Config
 ├── dxbarrier.hpp      resource state barrier batch helper
 ├── dxjit.hpp          DXC shader compiler + PSO pipeline cache
 ├── dxblas.hpp         BLAS ops: vector add, GEMM (F16 dot2add + F32 tiled)

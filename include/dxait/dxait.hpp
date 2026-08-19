@@ -11,6 +11,14 @@
 #include <memory>
 #include <system_error>
 
+#if defined(DXAIT_DLL_BUILD)
+#define DXAIT_API __declspec(dllexport)
+#elif defined(DXAIT_DLL_USE)
+#define DXAIT_API __declspec(dllimport)
+#else
+#define DXAIT_API
+#endif
+
 namespace dxait {
 
 using Microsoft::WRL::ComPtr;
@@ -68,7 +76,7 @@ struct AdapterCaps {
     uint32_t preferred_wave_size{32};
 };
 
-class Config {
+class DXAIT_API Config {
 public:
     static uint64_t get_chunk_size_bytes();
     static void set_chunk_size_bytes(uint64_t bytes);
@@ -81,7 +89,7 @@ public:
 };
 
 // GPU TDR (Timeout Detection & Recovery) Blackout Safeguard Engine
-class TDRGuard {
+class DXAIT_API TDRGuard {
 public:
     static void yield_gpu_breather(ID3D12CommandQueue* queue, ID3D12Fence* fence, uint64_t& fence_val);
     static bool is_device_removed(ID3D12Device* device);
@@ -89,13 +97,13 @@ public:
 
 class Device;
 
-class Adapter {
+class DXAIT_API Adapter {
 public:
     static std::vector<AdapterCaps> enumerate();
     static std::unique_ptr<Device> create_device(uint32_t index = 0);
 };
 
-class Fence {
+class DXAIT_API Fence {
 public:
     Fence(ID3D12Device* device, uint64_t initial_val = 0);
     ~Fence() = default;
@@ -109,7 +117,7 @@ private:
     HANDLE m_event{nullptr};
 };
 
-class Buffer {
+class DXAIT_API Buffer {
 public:
     Buffer(ID3D12Device* device, uint64_t size_bytes, MemLocation loc);
     ~Buffer() = default;
@@ -127,7 +135,7 @@ private:
     MemLocation m_location;
 };
 
-class Queue {
+class DXAIT_API Queue {
 public:
     Queue(ID3D12Device* device, QueueType type);
     ~Queue() = default;
@@ -141,7 +149,7 @@ private:
     ComPtr<ID3D12CommandQueue> m_queue;
 };
 
-class Device {
+class DXAIT_API Device {
 public:
     explicit Device(ComPtr<IDXGIAdapter1> adapter);
     ~Device() = default;

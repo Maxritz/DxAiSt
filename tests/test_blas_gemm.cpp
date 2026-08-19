@@ -97,12 +97,14 @@ int main() {
     for (uint32_t k = 0; k < K2; ++k)
         for (uint32_t c = 0; c < N2; ++c) bf[k * N2 + c] = f32_to_f16(0.5f * (float)(k + 1));
 
-    // pack halves per uint (little-endian half pairs)
+    // pack halves per uint (little-endian half pairs): A pairs along K (row-major
+    // flat), B pairs along K per column so dot2add pairs same-k with same-k.
     std::vector<uint32_t> apack(K2 * K2 / 2), bpack(K2 * N2 / 2);
     for (uint32_t i = 0; i < K2 * K2 / 2; ++i)
         apack[i] = (uint32_t)af[2 * i] | ((uint32_t)af[2 * i + 1] << 16);
-    for (uint32_t i = 0; i < K2 * N2 / 2; ++i)
-        bpack[i] = (uint32_t)bf[2 * i] | ((uint32_t)bf[2 * i + 1] << 16);
+    for (uint32_t c = 0; c < N2; ++c)
+        for (uint32_t k2 = 0; k2 < K2 / 2; ++k2)
+            bpack[c * (K2 / 2) + k2] = (uint32_t)bf[(2 * k2) * N2 + c] | ((uint32_t)bf[(2 * k2 + 1) * N2 + c] << 16);
 
     auto f16_to_f32 = [](uint16_t h) -> float {
         uint32_t sign = (uint32_t)(h & 0x8000u) << 16;

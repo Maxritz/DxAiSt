@@ -1,10 +1,10 @@
-Start testing: Aug 14 15:59 India Standard Time
+Start testing: Aug 19 16:53 India Standard Time
 ----------------------------------------------------------
-1/30 Testing: test_device_init
-1/30 Test: test_device_init
-Command: "F:/DXAiSt/build/Release/test_device_init.exe"
-Directory: F:/DXAiSt/build
-"test_device_init" start time: Aug 14 15:59 India Standard Time
+1/31 Testing: test_device_init
+1/31 Test: test_device_init
+Command: "C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_device_init.exe"
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_device_init" start time: Aug 19 16:53 India Standard Time
 Output:
 ----------------------------------------------------------
 Found 1 D3D12 hardware adapters:
@@ -14,666 +14,370 @@ Found 1 D3D12 hardware adapters:
    WMMA Supported: YES, Dot4 Supported: YES
 D3D12 Device successfully created!
 <end of output>
-Test time =   0.24 sec
+Test time =   0.21 sec
 ----------------------------------------------------------
 Test Passed.
-"test_device_init" end time: Aug 14 15:59 India Standard Time
+"test_device_init" end time: Aug 19 16:53 India Standard Time
 "test_device_init" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-2/30 Testing: test_mem_alloc
-2/30 Test: test_mem_alloc
-Command: "F:/DXAiSt/build/Release/test_mem_alloc.exe"
-Directory: F:/DXAiSt/build
-"test_mem_alloc" start time: Aug 14 15:59 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_mem_alloc.exe
+2/31 Testing: test_mem_alloc
+2/31 Test: test_mem_alloc
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_mem_alloc" start time: 
 Output:
 ----------------------------------------------------------
-DXAiT Memory Allocation and Queue Fence Test Passed!
 <end of output>
-Test time =   0.23 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_mem_alloc" end time: Aug 14 15:59 India Standard Time
+"test_mem_alloc" end time: Aug 19 16:53 India Standard Time
 "test_mem_alloc" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-3/30 Testing: test_dxjit_blas
-3/30 Test: test_dxjit_blas
-Command: "F:/DXAiSt/build/Release/test_dxjit_blas.exe"
-Directory: F:/DXAiSt/build
-"test_dxjit_blas" start time: Aug 14 15:59 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_dxjit_blas.exe
+3/31 Testing: test_dxjit_blas
+3/31 Test: test_dxjit_blas
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_dxjit_blas" start time: 
 Output:
 ----------------------------------------------------------
-DXAiT JIT + BLAS Vector Add Compute Dispatch Passed Perfectly!
 <end of output>
-Test time =   0.24 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxjit_blas" end time: Aug 14 15:59 India Standard Time
+"test_dxjit_blas" end time: Aug 19 16:53 India Standard Time
 "test_dxjit_blas" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-4/30 Testing: test_substrate_full
-4/30 Test: test_substrate_full
-Command: "F:/DXAiSt/build/Release/test_substrate_full.exe"
-Directory: F:/DXAiSt/build
-"test_substrate_full" start time: Aug 14 15:59 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_substrate_full.exe
+4/31 Testing: test_substrate_full
+4/31 Test: test_substrate_full
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_substrate_full" start time: 
 Output:
 ----------------------------------------------------------
-Q8_0 Quantization roundtrip max error: 0.0220437 PASSED
-DXAiT Full Substrate (Graph + Quant + KV + Barriers) Test Passed!
 <end of output>
-Test time =   0.23 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_substrate_full" end time: Aug 14 15:59 India Standard Time
+"test_substrate_full" end time: Aug 19 16:53 India Standard Time
 "test_substrate_full" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-5/30 Testing: test_model_inference
-5/30 Test: test_model_inference
-Command: "F:/DXAiSt/build/Release/test_model_inference.exe"
-Directory: F:/DXAiSt/build
-"test_model_inference" start time: Aug 14 15:59 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_model_inference.exe
+5/31 Testing: test_model_inference
+5/31 Test: test_model_inference
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_model_inference" start time: 
 Output:
 ----------------------------------------------------------
-DXAiT Full SDK Execution (Math Ops + RMSNorm + Softmax + Scheduler) Passed Perfectly!
 <end of output>
-Test time =   0.25 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_model_inference" end time: Aug 14 15:59 India Standard Time
+"test_model_inference" end time: Aug 19 16:53 India Standard Time
 "test_model_inference" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-6/30 Testing: test_attention_rand
-6/30 Test: test_attention_rand
-Command: "F:/DXAiSt/build/Release/test_attention_rand.exe"
-Directory: F:/DXAiSt/build
-"test_attention_rand" start time: Aug 14 15:59 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_attention_rand.exe
+6/31 Testing: test_attention_rand
+6/31 Test: test_attention_rand
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_attention_rand" start time: 
 Output:
 ----------------------------------------------------------
-PCG32 GPU Random Generator Test PASSED
-DXAiT Attention SDPA + PRNG Test Passed!
 <end of output>
-Test time =   0.27 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_attention_rand" end time: Aug 14 15:59 India Standard Time
+"test_attention_rand" end time: Aug 19 16:53 India Standard Time
 "test_attention_rand" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-7/30 Testing: test_q4_quant
-7/30 Test: test_q4_quant
-Command: "F:/DXAiSt/build/Release/test_q4_quant.exe"
-Directory: F:/DXAiSt/build
-"test_q4_quant" start time: Aug 14 15:59 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_q4_quant.exe
+7/31 Testing: test_q4_quant
+7/31 Test: test_q4_quant
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_q4_quant" start time: 
 Output:
 ----------------------------------------------------------
-Q4_0 Quantization roundtrip max error: 0.50121 PASSED
-Q4_0 GPU Dequantization Compute Dispatch PASSED
 <end of output>
-Test time =   0.25 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_q4_quant" end time: Aug 14 15:59 India Standard Time
+"test_q4_quant" end time: Aug 19 16:53 India Standard Time
 "test_q4_quant" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-8/30 Testing: test_model_formats
-8/30 Test: test_model_formats
-Command: "F:/DXAiSt/build/Release/test_model_formats.exe"
-Directory: F:/DXAiSt/build
-"test_model_formats" start time: Aug 14 15:59 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_model_formats.exe
+8/31 Testing: test_model_formats
+8/31 Test: test_model_formats
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_model_formats" start time: 
 Output:
 ----------------------------------------------------------
-========================================================
- DXAiT Multi-Format Model Loaders Verification Suite
-========================================================
-
-[DXAiT ModelLoader Engine] Parsed 0 tensors (Arch: transformer_gqa, AttentionType: 1) from test_model.gguf
-[1/2] GGUF v3 Model Loader:               PASSED
-[2/2] Safetensors Model Loader:          PASSED
---------------------------------------------------------
- All 2 Model Format Loaders Verified End-to-End!
 <end of output>
-Test time =   0.04 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_model_formats" end time: Aug 14 15:59 India Standard Time
+"test_model_formats" end time: Aug 19 16:53 India Standard Time
 "test_model_formats" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-9/30 Testing: test_streaming_sharding
-9/30 Test: test_streaming_sharding
-Command: "F:/DXAiSt/build/Release/test_streaming_sharding.exe"
-Directory: F:/DXAiSt/build
-"test_streaming_sharding" start time: Aug 14 15:59 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_streaming_sharding.exe
+9/31 Testing: test_streaming_sharding
+9/31 Test: test_streaming_sharding
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_streaming_sharding" start time: 
 Output:
 ----------------------------------------------------------
-Disk-based Model Chunk Streaming PASSED
-Model Sharding Engine PASSED
-Advanced Hadamard Radix KV Cache PASSED
-Multi-GPU Collective Engine PASSED
-All Advanced Subsystems (Chunking, Sharding, Advanced KV Cache, Collectives) PASSED PERFECTLY!
 <end of output>
-Test time =   0.23 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_streaming_sharding" end time: Aug 14 15:59 India Standard Time
+"test_streaming_sharding" end time: Aug 19 16:53 India Standard Time
 "test_streaming_sharding" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-10/30 Testing: test_real_model_loading
-10/30 Test: test_real_model_loading
-Command: "F:/DXAiSt/build/Release/test_real_model_loading.exe"
-Directory: F:/DXAiSt/build
-"test_real_model_loading" start time: Aug 14 15:59 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_real_model_loading.exe
+10/31 Testing: test_real_model_loading
+10/31 Test: test_real_model_loading
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_real_model_loading" start time: 
 Output:
 ----------------------------------------------------------
-========================================================
- DXAiT Real End-to-End Model Loading & Streaming Test
-========================================================
-
-Real Model Weight Streaming to GPU VRAM Verification PASSED!
 <end of output>
-Test time =   0.22 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_real_model_loading" end time: Aug 14 15:59 India Standard Time
+"test_real_model_loading" end time: Aug 19 16:53 India Standard Time
 "test_real_model_loading" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-11/30 Testing: test_large_gguf_spillover
-11/30 Test: test_large_gguf_spillover
-Command: "F:/DXAiSt/build/Release/test_large_gguf_spillover.exe"
-Directory: F:/DXAiSt/build
-"test_large_gguf_spillover" start time: Aug 14 15:59 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_large_gguf_spillover.exe
+11/31 Testing: test_large_gguf_spillover
+11/31 Test: test_large_gguf_spillover
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_large_gguf_spillover" start time: 
 Output:
 ----------------------------------------------------------
-========================================================
- DXAiT Full 18.68 GB GGUF Model VRAM + System RAM Residency Test
-========================================================
-
-Target GPU:              AMD Radeon RX 9070 XT
-Dedicated VRAM Capacity:  16188 MB
-Shared System RAM:       78569 MB
-
-1. Memory-mapping 18.68 GB GGUF model file...
-[DXAiT ModelLoader Engine] Parsed 833 tensors (Arch: transformer_gqa, AttentionType: 1) from E:\OLLAMA-Models\GGUF\Gemma-4-31B-Fable-5-Distill.q4_k_m.gguf
-   Memory-mapped 18.68 GB file in 70.1018 ms
-   Parsed 833 tensors!
-
-2. Streaming 14.0 GB of model tensors into Dedicated VRAM + System RAM...
-   Streamed Chunk [1/7] (2.0 GB) -> VRAM Handle 000002BCEDCB4740 in 2107.78 ms (0.948865 GB/s)
-   Streamed Chunk [2/7] (2.0 GB) -> VRAM Handle 000002BCF5ED45A0 in 1955.51 ms (1.02275 GB/s)
-   Streamed Chunk [3/7] (2.0 GB) -> VRAM Handle 000002BCF5ED4960 in 1979.95 ms (1.01013 GB/s)
-   Streamed Chunk [4/7] (2.0 GB) -> VRAM Handle 000002BCF5EDB280 in 1948.91 ms (1.02621 GB/s)
-   Streamed Chunk [5/7] (2.0 GB) -> VRAM Handle 000002BCF5EDD650 in 1962.09 ms (1.01932 GB/s)
-   Streamed Chunk [6/7] (2.0 GB) -> VRAM Handle 000002BCF5EDDA10 in 1949.71 ms (1.02579 GB/s)
-   Streamed Chunk [7/7] (2.0 GB) -> VRAM Handle 000002BCF5EE5DE0 in 2125.8 ms (0.940822 GB/s)
-
-   Total 14.0 GB Streaming Time: 14030.1 ms (0.997856 GB/s throughput)
-========================================================
- Full 18.68 GB GGUF Model Streaming & Residency Test PASSED!
 <end of output>
-Test time =  14.85 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_large_gguf_spillover" end time: Aug 14 16:00 India Standard Time
-"test_large_gguf_spillover" time elapsed: 00:00:14
+"test_large_gguf_spillover" end time: Aug 19 16:53 India Standard Time
+"test_large_gguf_spillover" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-12/30 Testing: test_50_50_offloading
-12/30 Test: test_50_50_offloading
-Command: "F:/DXAiSt/build/Release/test_50_50_offloading.exe"
-Directory: F:/DXAiSt/build
-"test_50_50_offloading" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_50_50_offloading.exe
+12/31 Testing: test_50_50_offloading
+12/31 Test: test_50_50_offloading
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_50_50_offloading" start time: 
 Output:
 ----------------------------------------------------------
-========================================================
- DXAiT 50% VRAM / 50% RAM Offload & Hardware DMA Trace
-========================================================
-
-Target GPU Adapter:      AMD Radeon RX 9070 XT
-Dedicated VRAM Capacity:  16188 MB
-Shared System RAM:       78569 MB
-
-1. Allocating 256 MB in GPU Dedicated VRAM (D3D12_HEAP_TYPE_DEFAULT)...
-   VRAM Resource Handle: 0000026BBFCFC9F0
-2. Allocating 256 MB in System RAM / ReBAR (D3D12_HEAP_TYPE_UPLOAD)...
-   RAM Resource Handle:  0000026BB7B28820
-3. Writing test payload to System RAM buffer...
-4. Issuing D3D12 COPY Queue CopyBufferRegion (System RAM -> Dedicated VRAM)...
-   PCIe DMA Copy Completed in 10.2874 ms (26.0936 GB/s throughput)!
-5. Copying Dedicated VRAM buffer back to Readback Heap for hardware verification...
-6. Hardware PCIe DMA Byte-for-Byte Verification PASSED!
-========================================================
 <end of output>
-Test time =   0.34 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_50_50_offloading" end time: Aug 14 16:00 India Standard Time
+"test_50_50_offloading" end time: Aug 19 16:53 India Standard Time
 "test_50_50_offloading" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-13/30 Testing: test_sharding_perf
-13/30 Test: test_sharding_perf
-Command: "F:/DXAiSt/build/Release/test_sharding_perf.exe"
-Directory: F:/DXAiSt/build
-"test_sharding_perf" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_sharding_perf.exe
+13/31 Testing: test_sharding_perf
+13/31 Test: test_sharding_perf
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_sharding_perf" start time: 
 Output:
 ----------------------------------------------------------
-========================================================
- DXAiT Optimal Chunk Size Sweep & Throughput Benchmark
-========================================================
-
-Target GPU:              AMD Radeon RX 9070 XT
-Dedicated VRAM Capacity:  16188 MB
-Shared System RAM:       78569 MB
-
-| Chunk Size (MB) | Num Chunks | Total MB | Time (ms) | Speed (GB/s) |
-|-----------------|------------|----------|-----------|--------------|
-|              32 |          8 |      256 |     215.4 |        1.161 |
-|              64 |          8 |      512 |     416.9 |        1.199 |
-|             128 |          8 |     1024 |     506.0 |        1.976 |
-|             256 |          8 |     2048 |     993.3 |        2.014 |
-|             512 |          4 |     2048 |    1106.2 |        1.808 |
-|            1024 |          2 |     2048 |    1119.5 |        1.786 |
-
-========================================================
- Optimal Chunk Size Result:
-   Optimal Chunk Granularity: 256 MB
-   Peak DMA Streaming Speed:  2.014 GB/s
-========================================================
 <end of output>
-Test time =   4.92 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_sharding_perf" end time: Aug 14 16:00 India Standard Time
-"test_sharding_perf" time elapsed: 00:00:04
+"test_sharding_perf" end time: Aug 19 16:53 India Standard Time
+"test_sharding_perf" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-14/30 Testing: test_split_load_inference
-14/30 Test: test_split_load_inference
-Command: "F:/DXAiSt/build/Release/test_split_load_inference.exe"
-Directory: F:/DXAiSt/build
-"test_split_load_inference" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_split_load_inference.exe
+14/31 Testing: test_split_load_inference
+14/31 Test: test_split_load_inference
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_split_load_inference" start time: 
 Output:
 ----------------------------------------------------------
-========================================================
- DXAiT Split-Load Multi-Layer Inference Harness Test
-========================================================
-
-Target GPU:              AMD Radeon RX 9070 XT
-Dedicated VRAM Capacity:  16188 MB
-Shared System RAM:       78569 MB
-
-1. Sharding 16 Transformer Layers (50% VRAM / 50% System RAM)...
-   Successfully allocated and sharded 16 transformer layer tensors!
-
-2. Executing 16-Layer Split-Load Transformer Forward Pass...
-   [Layer  1/16] Location: Dedicated VRAM | Compute Latency: 13.427 ms
-   [Layer  2/16] Location: Dedicated VRAM | Compute Latency: 1.255 ms
-   [Layer  3/16] Location: Dedicated VRAM | Compute Latency: 1.080 ms
-   [Layer  4/16] Location: Dedicated VRAM | Compute Latency: 1.099 ms
-   [Layer  5/16] Location: Dedicated VRAM | Compute Latency: 1.119 ms
-   [Layer  6/16] Location: Dedicated VRAM | Compute Latency: 1.149 ms
-   [Layer  7/16] Location: Dedicated VRAM | Compute Latency: 1.128 ms
-   [Layer  8/16] Location: Dedicated VRAM | Compute Latency: 1.128 ms
-   [Layer  9/16] Location: Shared System RAM | Compute Latency: 1.124 ms
-   [Layer 10/16] Location: Shared System RAM | Compute Latency: 1.081 ms
-   [Layer 11/16] Location: Shared System RAM | Compute Latency: 1.074 ms
-   [Layer 12/16] Location: Shared System RAM | Compute Latency: 1.085 ms
-   [Layer 13/16] Location: Shared System RAM | Compute Latency: 1.086 ms
-   [Layer 14/16] Location: Shared System RAM | Compute Latency: 1.094 ms
-   [Layer 15/16] Location: Shared System RAM | Compute Latency: 1.105 ms
-   [Layer 16/16] Location: Shared System RAM | Compute Latency: 1.072 ms
-
-   Sample Output Activation Token Vector [0..3]: 1.000, 1.000, 1.000, 1.000
-
-========================================================
- Inference Harness Performance Summary:
-   Total Layers Evaluated: 16 (8 VRAM + 8 System RAM)
-   Total Forward Pass:     30.21 ms
-   Avg Latency per Layer:  1.888 ms
-========================================================
- Split-Load Model Inference Harness Test PASSED!
 <end of output>
-Test time =   0.34 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_split_load_inference" end time: Aug 14 16:00 India Standard Time
+"test_split_load_inference" end time: Aug 19 16:53 India Standard Time
 "test_split_load_inference" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-15/30 Testing: test_chat_inference_harness
-15/30 Test: test_chat_inference_harness
-Command: "F:/DXAiSt/build/Release/test_chat_inference_harness.exe"
-Directory: F:/DXAiSt/build
-"test_chat_inference_harness" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_chat_inference_harness.exe
+15/31 Testing: test_chat_inference_harness
+15/31 Test: test_chat_inference_harness
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_chat_inference_harness" start time: 
 Output:
 ----------------------------------------------------------
-========================================================
- DXAiT 128K Long-Context Split-Load Chat Inference Harness
-========================================================
-
-Target GPU:              AMD Radeon RX 9070 XT
-Dedicated VRAM Capacity:  16188 MB
-Shared System RAM:       78569 MB
-
-1. Initialized 128K Token Long-Context Engine (Q4_0 KV Cache Quantization)...
-   - Hot VRAM KV Capacity:   32 MB
-   - Cold System RAM KV:     992 MB
-   - KV Compression Ratio:   4x
-
-2. Sharding 16 Model Layers (50% Dedicated VRAM / 50% System RAM)...
-   Successfully allocated and sharded 16 transformer layer weights!
-
-3. Running Autoregressive Interactive Chat Generation (16 tokens)...
-   [Chat Token  1/16] Generated Token ID: 1000 | Decode Latency: 29.44 ms (34.0 tok/s)
-   [Chat Token  2/16] Generated Token ID: 1007 | Decode Latency: 16.12 ms (62.0 tok/s)
-   [Chat Token  3/16] Generated Token ID: 1014 | Decode Latency: 15.92 ms (62.8 tok/s)
-   [Chat Token  4/16] Generated Token ID: 1021 | Decode Latency: 16.01 ms (62.4 tok/s)
-   [Chat Token  5/16] Generated Token ID: 1028 | Decode Latency: 15.87 ms (63.0 tok/s)
-   [Chat Token  6/16] Generated Token ID: 1035 | Decode Latency: 15.83 ms (63.2 tok/s)
-   [Chat Token  7/16] Generated Token ID: 1042 | Decode Latency: 15.72 ms (63.6 tok/s)
-   [Chat Token  8/16] Generated Token ID: 1049 | Decode Latency: 15.68 ms (63.8 tok/s)
-   [Chat Token  9/16] Generated Token ID: 1056 | Decode Latency: 15.66 ms (63.9 tok/s)
-   [Chat Token 10/16] Generated Token ID: 1063 | Decode Latency: 16.17 ms (61.8 tok/s)
-   [Chat Token 11/16] Generated Token ID: 1070 | Decode Latency: 15.89 ms (62.9 tok/s)
-   [Chat Token 12/16] Generated Token ID: 1077 | Decode Latency: 15.73 ms (63.6 tok/s)
-   [Chat Token 13/16] Generated Token ID: 1084 | Decode Latency: 15.93 ms (62.8 tok/s)
-   [Chat Token 14/16] Generated Token ID: 1091 | Decode Latency: 15.90 ms (62.9 tok/s)
-   [Chat Token 15/16] Generated Token ID: 1098 | Decode Latency: 15.59 ms (64.1 tok/s)
-   [Chat Token 16/16] Generated Token ID: 1105 | Decode Latency: 15.73 ms (63.6 tok/s)
-[MARK] map done ptr=000002157B932000
-
-   Final Output Activation Token Vector [0..3]: 0.0, 0.0, 0.0, 0.0
-
-========================================================
- Chat Interactive Harness Performance Summary:
-   Total Tokens Generated:  16
-   Total Generation Time:   267.58 ms
-   Avg Latency per Token:   16.72 ms/token
-   Decode Throughput:       59.8 tokens/sec
-========================================================
- 128K Long-Context Split-Load Chat Harness Test PASSED!
 <end of output>
-Test time =   0.63 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_chat_inference_harness" end time: Aug 14 16:00 India Standard Time
+"test_chat_inference_harness" end time: Aug 19 16:53 India Standard Time
 "test_chat_inference_harness" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-16/30 Testing: test_512k_rag_mcp
-16/30 Test: test_512k_rag_mcp
-Command: "F:/DXAiSt/build/Release/test_512k_rag_mcp.exe"
-Directory: F:/DXAiSt/build
-"test_512k_rag_mcp" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_512k_rag_mcp.exe
+16/31 Testing: test_512k_rag_mcp
+16/31 Test: test_512k_rag_mcp
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_512k_rag_mcp" start time: 
 Output:
 ----------------------------------------------------------
-========================================================
- DXAiT 512K Context, FastRetrieveDB RAG & MCP Server Test
-========================================================
-
-Target GPU:              AMD Radeon RX 9070 XT
-Dedicated VRAM Capacity:  16188 MB
-Shared System RAM:       78569 MB
-
-1. 512K Engine Initialized (256K User Requested Target) & 100,000 Tokens Ingested:
-   - Target User Context: 262144 tokens
-   - Active Ingested:    100000
-   - VRAM Hot Tokens:    8192 (64 MB)
-   - System RAM Offload: 91808 (1984 MB)
-   - KV Quantization:    Q4_0 (4x Compression)
-
-   Testing Context Translation for Small Model (4096 Context Window)...
-[DXAiT LongContextEngine] Translating 100000 Token Context -> 4096 Token Model Window:
-   - Anchor Prompt Tokens: 128
-   - Recent Window Tokens: 3968
-   - Compressed Middle:    95904 tokens
-   Context Translation Verified!
-
-2. Indexing Documents into FastRetrieveDB Vector Store...
-   - Total Vector Documents: 3
-   - Top RAG Match: [doc_1] "DirectX 12 GPU Compute Substrate Architecture" (Similarity: 1)
-
-   - Removing doc_3 and compacting database index...
-   - Compacted Database Count: 2 documents!
-
-3. Testing Model Context Protocol (MCP) Server JSON-RPC Interface...
-   - MCP tools/list response: {"jsonrpc":"2.0","result":{"tools":[{"name":"rag_search","description":"Retrieve top-K relevant documents from in-memory FastRetrieveDB using vector embeddings"},{"name":"context_compact","description":"Compact and vacuum tombstoned vector documents and defragment KV cache"},{"name":"context_stats","description":"Get real-time statistics for 512K Long-Context Engine and VRAM/System RAM offloading"}]},"id":1}
-   - MCP context_stats response: {"jsonrpc":"2.0","result":{"active_tokens":100000,"vram_tokens":8192,"sysram_tokens":91808,"vram_bytes":67108864,"compression_ratio":4},"id":1}
-   - MCP rag_search response: {"jsonrpc":"2.0","result":{"retrieved_docs":[{"id":"doc_1","text":"DirectX 12 GPU Compute Substrate Architecture","similarity":1},{"id":"doc_2","text":"512K Long Context Window & Dynamic Offloading","similarity":1}]},"id":1}
-
-========================================================
- 512K Context, FastRetrieveDB RAG & MCP Server Test PASSED!
 <end of output>
-Test time =   0.39 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_512k_rag_mcp" end time: Aug 14 16:00 India Standard Time
+"test_512k_rag_mcp" end time: Aug 19 16:53 India Standard Time
 "test_512k_rag_mcp" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-17/30 Testing: test_dxnetwork
-17/30 Test: test_dxnetwork
-Command: "F:/DXAiSt/build/Release/test_dxnetwork.exe"
-Directory: F:/DXAiSt/build
-"test_dxnetwork" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_dxnetwork.exe
+17/31 Testing: test_dxnetwork
+17/31 Test: test_dxnetwork
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_dxnetwork" start time: 
 Output:
 ----------------------------------------------------------
-========================================================
- DXAiT Secure & Insecure DirectX Network Transport Test
-========================================================
-
-Target Local GPU:        AMD Radeon RX 9070 XT
-Dedicated VRAM Capacity:  16188 MB
-
-1. Testing Insecure Zero-Overhead Network Transport Mode...
-[DXAiT NetworkClient] Connected to Server #1 at 192.168.1.101:9090 (Insecure High-Throughput Mode)
-[DXAiT Network Transport] Transmitted 64 MB GPU Tensor Payload to Node #1 (Insecure Raw DMA Stream)
-   Insecure Raw DMA Stream Verified!
-
-2. Enabling AES-256 Encryption & HMAC Security Handshake Mode...
-[DXAiT XML Exchange] Manifest Exchanged:
-<NodeManifest>
-  <NodeName>AMD Radeon RX 9070 XT</NodeName>
-  <IPAddress>192.168.1.100</IPAddress>
-  <Port>9090</Port>
-  <VendorID>0x0</VendorID>
-  <DeviceID>0x0</DeviceID>
-  <VRAMCapacityMB>0</VRAMCapacityMB>
-  <ShaderModel>6.6</ShaderModel>
-  <ShaderHash>0x9F82A4B1</ShaderHash>
-  <WMMA>false</WMMA>
-  <FP16>true</FP16>
-  <AuthSignature>0x04a9690153467285</AuthSignature>
-</NodeManifest>
-[DXAiT Auth] Node #1 HMAC Security Handshake SUCCESS!
-[DXAiT Network Transport] Transmitted 64 MB GPU Tensor Payload to Node #1 (AES-256 Encrypted)
-[DXAiT Network Transport] Received 64 MB GPU Tensor Payload from Node #1 (AES-256 Decrypted)
-
-========================================================
- Secure & Insecure DirectX Network Transport Test PASSED!
 <end of output>
-Test time =   0.22 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxnetwork" end time: Aug 14 16:00 India Standard Time
+"test_dxnetwork" end time: Aug 19 16:53 India Standard Time
 "test_dxnetwork" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-18/30 Testing: test_dxtriton
-18/30 Test: test_dxtriton
-Command: "F:/DXAiSt/build/Release/test_dxtriton.exe"
-Directory: F:/DXAiSt/build
-"test_dxtriton" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_dxtriton.exe
+18/31 Testing: test_dxtriton
+18/31 Test: test_dxtriton
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_dxtriton" start time: 
 Output:
 ----------------------------------------------------------
-========================================================
- DXAiT AITER / Triton-JIT HLSL Compiler Engine Test
-========================================================
-
-Target GPU:              AMD Radeon RX 9070 XT
-Preferred Wave Size:     Wave64
-
-1. Generating AITER/Triton HLSL Compute Shader Source...
-   Triton HLSL Source Code Generated Successfully!
-
-2. JIT Compiling Triton HLSL Source into D3D12 Pipeline State Object...
-   Triton PSO JIT Compiled Successfully!
-
-3. Dispatching JIT Compiled Triton MatMul Kernel...
-   Triton Kernel Output Result [0..3]: 128, 0, 0, 0
-
-========================================================
- AITER / Triton-JIT HLSL Compiler Engine Test PASSED!
 <end of output>
-Test time =   0.24 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxtriton" end time: Aug 14 16:00 India Standard Time
+"test_dxtriton" end time: Aug 19 16:53 India Standard Time
 "test_dxtriton" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-19/30 Testing: test_dxfft
-19/30 Test: test_dxfft
-Command: "F:/DXAiSt/build/Release/test_dxfft.exe"
-Directory: F:/DXAiSt/build
-"test_dxfft" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_dxfft.exe
+19/31 Testing: test_dxfft
+19/31 Test: test_dxfft
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_dxfft" start time: 
 Output:
 ----------------------------------------------------------
-DXAiT Radix2 FFT Verification Suite
-===================================
-
-Running FFT on impulse signal (n=8)...
-  Output (real, imag):
-    [0] (1.0000, 0.0000)
-    [1] (1.0000, 0.0000)
-    [2] (1.0000, 0.0000)
-    [3] (1.0000, 0.0000)
-    [4] (1.0000, 0.0000)
-    [5] (1.0000, 0.0000)
-    [6] (1.0000, 0.0000)
-    [7] (1.0000, 0.0000)
-
-Result: FFT impulse test PASSED (all ones, imag zero)
 <end of output>
-Test time =   0.24 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxfft" end time: Aug 14 16:00 India Standard Time
+"test_dxfft" end time: Aug 19 16:53 India Standard Time
 "test_dxfft" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-20/30 Testing: test_dxcache
-20/30 Test: test_dxcache
-Command: "F:/DXAiSt/build/Release/test_dxcache.exe"
-Directory: F:/DXAiSt/build
-"test_dxcache" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_dxcache.exe
+20/31 Testing: test_dxcache
+20/31 Test: test_dxcache
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_dxcache" start time: 
 Output:
 ----------------------------------------------------------
-DXAiT AdvancedKVCache Hadamard Transform Test
-==============================================
-
-Applying hadamard transform to [1,2,3,4]...
-  out[0] = 10.0000 (expected 10.0000)
-  out[1] = -2.0000 (expected -2.0000)
-  out[2] = -4.0000 (expected -4.0000)
-  out[3] = 0.0000 (expected 0.0000)
-
-Result: Hadamard transform PASSED
 <end of output>
-Test time =   0.27 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxcache" end time: Aug 14 16:00 India Standard Time
+"test_dxcache" end time: Aug 19 16:53 India Standard Time
 "test_dxcache" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-21/30 Testing: test_dxspeculative
-21/30 Test: test_dxspeculative
-Command: "F:/DXAiSt/build/Release/test_dxspeculative.exe"
-Directory: F:/DXAiSt/build
-"test_dxspeculative" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_dxspeculative.exe
+21/31 Testing: test_dxspeculative
+21/31 Test: test_dxspeculative
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_dxspeculative" start time: 
 Output:
 ----------------------------------------------------------
-DXAiT Speculative Decoding Verification Test
-=============================================
-
-Case 1: target == draft (r=0.5). Expect all accepted.
-  draft[0]=0 accept_mask=1
-  draft[1]=1 accept_mask=1
-  draft[2]=2 accept_mask=1
-  draft[3]=3 accept_mask=1
-
-Case 2: target P(draft)=0. Expect all rejected.
-  draft[0]=0 accept_mask=1 (expect 1)
-  draft[1]=1 accept_mask=0 (expect 0)
-  draft[2]=2 accept_mask=0 (expect 0)
-  draft[3]=3 accept_mask=0 (expect 0)
-
-Result: Speculative verification PASSED
 <end of output>
-Test time =   0.24 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxspeculative" end time: Aug 14 16:00 India Standard Time
+"test_dxspeculative" end time: Aug 19 16:53 India Standard Time
 "test_dxspeculative" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-22/30 Testing: test_dxgraph
-22/30 Test: test_dxgraph
-Command: "F:/DXAiSt/build/Release/test_dxgraph.exe"
-Directory: F:/DXAiSt/build
-"test_dxgraph" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_dxgraph.exe
+22/31 Testing: test_dxgraph
+22/31 Test: test_dxgraph
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_dxgraph" start time: 
 Output:
 ----------------------------------------------------------
-DXAiT CommandGraph Topological Sort Test
-==========================================
-
-Execution order: 0 1 2 3
-Invalid dependency threw: yes
-
-Result: CommandGraph PASSED
 <end of output>
-Test time =   0.22 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxgraph" end time: Aug 14 16:00 India Standard Time
+"test_dxgraph" end time: Aug 19 16:53 India Standard Time
 "test_dxgraph" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-23/30 Testing: test_dxtrace
-23/30 Test: test_dxtrace
-Command: "F:/DXAiSt/build/Release/test_dxtrace.exe"
-Directory: F:/DXAiSt/build
-"test_dxtrace" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_dxtrace.exe
+23/31 Testing: test_dxtrace
+23/31 Test: test_dxtrace
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_dxtrace" start time: 
 Output:
 ----------------------------------------------------------
-DXAiT Trace Marker Smoke Test
-==============================
-
-Recording trace markers...
-Recorded and executed command list with markers.
-
-Result: Trace marker smoke test PASSED
 <end of output>
-Test time =   0.23 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_dxtrace" end time: Aug 14 16:00 India Standard Time
+"test_dxtrace" end time: Aug 19 16:53 India Standard Time
 "test_dxtrace" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-24/30 Testing: test_blas_gemm
-24/30 Test: test_blas_gemm
-Command: "F:/DXAiSt/build/Release/test_blas_gemm.exe"
-Directory: F:/DXAiSt/build
-"test_blas_gemm" start time: Aug 14 16:00 India Standard Time
+24/31 Testing: test_blas_gemm
+24/31 Test: test_blas_gemm
+Command: "C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_blas_gemm.exe"
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_blas_gemm" start time: Aug 19 16:53 India Standard Time
 Output:
 ----------------------------------------------------------
 DXAiT CUTLASS-style Tiled GEMM Test
@@ -686,144 +390,156 @@ Dispatching tiled GEMM 32x32x32 (tile 16x16)...
 Result: Tiled GEMM PASSED
 
 Dispatching F16 dot2add GEMM 32x32x32...
-  F16 max abs error = 260.796875
+  F16 max abs error = 0.000000
 Result: F16 dot2add GEMM PASSED
-<end of output>
-Test time =   0.25 sec
-----------------------------------------------------------
-Test Passed.
-"test_blas_gemm" end time: Aug 14 16:00 India Standard Time
-"test_blas_gemm" time elapsed: 00:00:00
-----------------------------------------------------------
-
-25/30 Testing: test_attention_variants
-25/30 Test: test_attention_variants
-Command: "F:/DXAiSt/build/Release/test_attention_variants.exe"
-Directory: F:/DXAiSt/build
-"test_attention_variants" start time: Aug 14 16:00 India Standard Time
-Output:
-----------------------------------------------------------
-DXAiT Attention Mechanism Variants Test (MHA / GQA / MQA / SWA)
-===============================================================
-
-  [MHA (kv=q heads)] max_err=0.00000 PASS
-  [GQA (shared KV)] max_err=0.00000 PASS
-  [MQA (1 KV head)] max_err=0.00000 PASS
-  [SWA (causal win=4)] max_err=0.00000 PASS
-  [FlashAttention] max_err=0.00000 PASS
-  [LinearAttention] max_err=0.00000 PASS
-
-Result: Attention variants PASSED
-<end of output>
-Test time =   0.35 sec
-----------------------------------------------------------
-Test Passed.
-"test_attention_variants" end time: Aug 14 16:00 India Standard Time
-"test_attention_variants" time elapsed: 00:00:00
-----------------------------------------------------------
-
-26/30 Testing: test_attn_paged
-26/30 Test: test_attn_paged
-Command: "F:/DXAiSt/build/Release/test_attn_paged.exe"
-Directory: F:/DXAiSt/build
-"test_attn_paged" start time: Aug 14 16:00 India Standard Time
-Output:
-----------------------------------------------------------
-DXAiT PagedAttention Block-Table Test
-=====================================
-
-  max_err=0.00000 PASS
-
-Result: PagedAttention PASSED
-<end of output>
-Test time =   0.25 sec
-----------------------------------------------------------
-Test Passed.
-"test_attn_paged" end time: Aug 14 16:00 India Standard Time
-"test_attn_paged" time elapsed: 00:00:00
-----------------------------------------------------------
-
-27/30 Testing: test_attn_h2o
-27/30 Test: test_attn_h2o
-Command: "F:/DXAiSt/build/Release/test_attn_h2o.exe"
-Directory: F:/DXAiSt/build
-"test_attn_h2o" start time: Aug 14 16:00 India Standard Time
-Output:
-----------------------------------------------------------
-DXAiT Heavy-Hitter H2O Attention Test
-=====================================
-
-  max_err=0.00000 PASS
-
-Result: H2O Attention PASSED
-<end of output>
-Test time =   0.25 sec
-----------------------------------------------------------
-Test Passed.
-"test_attn_h2o" end time: Aug 14 16:00 India Standard Time
-"test_attn_h2o" time elapsed: 00:00:00
-----------------------------------------------------------
-
-28/30 Testing: test_attn_chunked
-28/30 Test: test_attn_chunked
-Command: "F:/DXAiSt/build/Release/test_attn_chunked.exe"
-Directory: F:/DXAiSt/build
-"test_attn_chunked" start time: Aug 14 16:00 India Standard Time
-Output:
-----------------------------------------------------------
-DXAiT ChunkedPrefill Test
-=========================
-
-  max_err=0.00000 PASS
-
-Result: ChunkedPrefill PASSED
 <end of output>
 Test time =   0.24 sec
 ----------------------------------------------------------
 Test Passed.
-"test_attn_chunked" end time: Aug 14 16:00 India Standard Time
+"test_blas_gemm" end time: Aug 19 16:53 India Standard Time
+"test_blas_gemm" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_attention_variants.exe
+25/31 Testing: test_attention_variants
+25/31 Test: test_attention_variants
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_attention_variants" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_attention_variants" end time: Aug 19 16:53 India Standard Time
+"test_attention_variants" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_attn_paged.exe
+26/31 Testing: test_attn_paged
+26/31 Test: test_attn_paged
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_attn_paged" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_attn_paged" end time: Aug 19 16:53 India Standard Time
+"test_attn_paged" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_attn_h2o.exe
+27/31 Testing: test_attn_h2o
+27/31 Test: test_attn_h2o
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_attn_h2o" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_attn_h2o" end time: Aug 19 16:53 India Standard Time
+"test_attn_h2o" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_attn_chunked.exe
+28/31 Testing: test_attn_chunked
+28/31 Test: test_attn_chunked
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_attn_chunked" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_attn_chunked" end time: Aug 19 16:53 India Standard Time
 "test_attn_chunked" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-29/30 Testing: test_attn_ring
-29/30 Test: test_attn_ring
-Command: "F:/DXAiSt/build/Release/test_attn_ring.exe"
-Directory: F:/DXAiSt/build
-"test_attn_ring" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_attn_ring.exe
+29/31 Testing: test_attn_ring
+29/31 Test: test_attn_ring
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_attn_ring" start time: 
 Output:
 ----------------------------------------------------------
-DXAiT RingAttention (single-GPU) Test
-=====================================
-
-  max_err=0.00000 PASS
-
-Result: RingAttention PASSED
 <end of output>
-Test time =   0.25 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_attn_ring" end time: Aug 14 16:00 India Standard Time
+"test_attn_ring" end time: Aug 19 16:53 India Standard Time
 "test_attn_ring" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-30/30 Testing: test_attn_ring_multi
-30/30 Test: test_attn_ring_multi
-Command: "F:/DXAiSt/build/Release/test_attn_ring_multi.exe"
-Directory: F:/DXAiSt/build
-"test_attn_ring_multi" start time: Aug 14 16:00 India Standard Time
+Unable to find executable: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_attn_ring_multi.exe
+30/31 Testing: test_attn_ring_multi
+30/31 Test: test_attn_ring_multi
+Command: ""
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_attn_ring_multi" start time: 
 Output:
 ----------------------------------------------------------
-DXAiT Multi-GPU RingAttention Test
-==================================
-
-Need >= 2 GPU adapters, found 1. Skipping multi-GPU ring test.
-Result: SKIPPED (single adapter)
 <end of output>
-Test time =   0.15 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_attn_ring_multi" end time: Aug 14 16:00 India Standard Time
+"test_attn_ring_multi" end time: Aug 19 16:53 India Standard Time
 "test_attn_ring_multi" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Aug 14 16:00 India Standard Time
+31/31 Testing: test_dxla
+31/31 Test: test_dxla
+Command: "C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/Release/test_dxla.exe"
+Directory: C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build
+"test_dxla" start time: Aug 19 16:53 India Standard Time
+Output:
+----------------------------------------------------------
+LA: gemm_f16_wmma: WMMA requires SM6.9/6.10 LinAlg (preview driver + Agility SDK) - excluded; using dot2
+DXAiT LA op-layer test
+======================
+
+GPU: AMD Radeon RX 9070 XT (vendor 0x1002 dev 0x7550, WMMA=0, arch=1)
+  Add            got[0]=1.343353 ref[0]=1.343353 max_err=0.00e+00 bad=0/10000 -> PASS
+  Sub            got[0]=-0.535440 ref[0]=-0.535440 max_err=0.00e+00 bad=0/10000 -> PASS
+  Mul            got[0]=0.379475 ref[0]=0.379475 max_err=0.00e+00 bad=0/10000 -> PASS
+  Div            got[0]=0.430017 ref[0]=0.430017 max_err=2.44e-04 bad=0/10000 -> PASS
+
+  relu           got[0]=0.002630 ref[0]=0.002630 max_err=0.00e+00 bad=0/10000 -> PASS
+  gelu           got[0]=0.001318 ref[0]=0.001318 max_err=4.77e-07 bad=0/10000 -> PASS
+  silu           got[0]=0.001317 ref[0]=0.001317 max_err=4.77e-07 bad=0/10000 -> PASS
+  tanh           got[0]=0.002630 ref[0]=0.002630 max_err=1.79e-07 bad=0/10000 -> PASS
+  sigmoid        got[0]=0.500657 ref[0]=0.500657 max_err=1.19e-07 bad=0/10000 -> PASS
+  leaky          got[0]=0.002630 ref[0]=0.002630 max_err=0.00e+00 bad=0/10000 -> PASS
+
+  rmsnorm        got[0]=0.051774 ref[0]=0.051774 max_err=4.77e-07 bad=0/1024 -> PASS
+
+  softmax        got[0]=0.113621 ref[0]=0.113621 max_err=1.49e-08 bad=0/512 -> PASS
+
+  sum            got[0]=-4.721735 ref[0]=-4.721735 max_err=0.00e+00 bad=0/8 -> PASS
+  max            got[0]=0.965303 ref[0]=0.965303 max_err=0.00e+00 bad=0/8 -> PASS
+  min            got[0]=-0.978888 ref[0]=-0.978888 max_err=0.00e+00 bad=0/8 -> PASS
+  mean           got[0]=-0.073777 ref[0]=-0.073777 max_err=0.00e+00 bad=0/8 -> PASS
+
+  gemm_f16_dot2  got[0]=68.000000 ref[0]=68.000000 max_err=0.00e+00 bad=0/256 -> PASS
+
+  gemm_f16_wmma  got[0]=68.000000 ref[0]=68.000000 max_err=0.00e+00 bad=0/256 -> PASS
+
+Overall: ALL TESTS PASSED
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"test_dxla" end time: Aug 19 16:53 India Standard Time
+"test_dxla" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Aug 19 16:53 India Standard Time

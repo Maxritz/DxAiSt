@@ -55,7 +55,8 @@ public:
         const std::string& hlsl_source,
         ID3D12RootSignature* root_sig,
         const std::wstring& entry = L"main",
-        const std::vector<ShaderCompileMacro>& macros = {}
+        const std::vector<ShaderCompileMacro>& macros = {},
+        const std::wstring& target_profile = L"cs_6_6"
     );
 
 private:

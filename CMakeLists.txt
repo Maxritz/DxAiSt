@@ -53,11 +53,29 @@ set(DXAIT_SOURCES
     src/dxmcp/dxmcp.cpp
     src/dxnetwork/dxnetwork.cpp
     src/dxtriton/dxtriton.cpp
+    src/dxla/dxla.cpp
+    src/dx_capi/dx_capi.cpp
 )
 
 add_library(dxait STATIC ${DXAIT_SOURCES})
 
 target_link_libraries(dxait PRIVATE
+    d3d12.lib
+    dxgi.lib
+    dxguid.lib
+    dxcompiler.lib
+    dstorage.lib
+    Winmm.lib
+    ws2_32.lib
+)
+
+# Shared/DLL build: exports DXAIT_API classes and the dx_c_api.h C surface.
+add_library(dxait_shared SHARED ${DXAIT_SOURCES})
+target_compile_definitions(dxait_shared PRIVATE DXAIT_DLL_BUILD)
+set_target_properties(dxait_shared PROPERTIES OUTPUT_NAME dxait)
+# Import lib must not collide with the static dxait.lib.
+set_target_properties(dxait_shared PROPERTIES ARCHIVE_OUTPUT_NAME dxait_import)
+target_link_libraries(dxait_shared PRIVATE
     d3d12.lib
     dxgi.lib
     dxguid.lib
@@ -164,6 +182,14 @@ add_test(NAME test_dxtrace COMMAND test_dxtrace)
 add_executable(test_blas_gemm tests/test_blas_gemm.cpp)
 target_link_libraries(test_blas_gemm PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
 add_test(NAME test_blas_gemm COMMAND test_blas_gemm)
+add_custom_command(TARGET test_blas_gemm POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory $<TARGET_FILE_DIR:test_blas_gemm>/D3D12
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${AGILITY_SDK_PATH}/bin/x64/D3D12Core.dll" $<TARGET_FILE_DIR:test_blas_gemm>/D3D12/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DXC_SDK_PATH}/bin/x64/dxcompiler.dll" $<TARGET_FILE_DIR:test_blas_gemm>/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DXC_SDK_PATH}/bin/x64/dxil.dll" $<TARGET_FILE_DIR:test_blas_gemm>/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DSTORAGE_SDK_PATH}/bin/x64/dstorage.dll" $<TARGET_FILE_DIR:test_blas_gemm>/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DSTORAGE_SDK_PATH}/bin/x64/dstoragecore.dll" $<TARGET_FILE_DIR:test_blas_gemm>/
+)
 
 add_executable(test_attention_variants tests/test_attention_variants.cpp)
 target_link_libraries(test_attention_variants PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
@@ -192,6 +218,10 @@ add_test(NAME test_attn_ring_multi COMMAND test_attn_ring_multi)
 add_executable(test_attn_gqa_iso tests/test_attn_gqa_iso.cpp)
 target_link_libraries(test_attn_gqa_iso PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
 
+add_executable(test_dxla tests/test_dxla.cpp)
+target_link_libraries(test_dxla PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
+add_test(NAME test_dxla COMMAND test_dxla)
+
 # Tool targets
 add_executable(dxinspect tools/dxinspect/main.cpp)
 target_link_libraries(dxinspect PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib)
@@ -201,6 +231,11 @@ target_link_libraries(dxbench PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcomp
 
 add_executable(dxmodelinfo tools/dxmodelinfo/main.cpp)
 target_link_libraries(dxmodelinfo PRIVATE dxait d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib)
+
+# C-API consumption demo: links the shared dxait.dll, uses only dx_c_api.h.
+add_executable(dxla_playground tools/dxla_playground/main.cpp)
+target_compile_definitions(dxla_playground PRIVATE DXAIT_DLL_USE)
+target_link_libraries(dxla_playground PRIVATE dxait_shared d3d12.lib dxgi.lib dxguid.lib dxcompiler.lib dstorage.lib Winmm.lib ws2_32.lib)
 
 # Copy SDK DLLs alongside test and tool binaries
 add_custom_command(TARGET test_device_init POST_BUILD
@@ -327,4 +362,23 @@ add_custom_command(TARGET dxmodelinfo POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DXC_SDK_PATH}/bin/x64/dxil.dll" $<TARGET_FILE_DIR:dxmodelinfo>/
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DSTORAGE_SDK_PATH}/bin/x64/dstorage.dll" $<TARGET_FILE_DIR:dxmodelinfo>/
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DSTORAGE_SDK_PATH}/bin/x64/dstoragecore.dll" $<TARGET_FILE_DIR:dxmodelinfo>/
+)
+
+add_custom_command(TARGET test_dxla POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory $<TARGET_FILE_DIR:test_dxla>/D3D12
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${AGILITY_SDK_PATH}/bin/x64/D3D12Core.dll" $<TARGET_FILE_DIR:test_dxla>/D3D12/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DXC_SDK_PATH}/bin/x64/dxcompiler.dll" $<TARGET_FILE_DIR:test_dxla>/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DXC_SDK_PATH}/bin/x64/dxil.dll" $<TARGET_FILE_DIR:test_dxla>/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DSTORAGE_SDK_PATH}/bin/x64/dstorage.dll" $<TARGET_FILE_DIR:test_dxla>/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DSTORAGE_SDK_PATH}/bin/x64/dstoragecore.dll" $<TARGET_FILE_DIR:test_dxla>/
+)
+
+add_custom_command(TARGET dxla_playground POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory $<TARGET_FILE_DIR:dxla_playground>/D3D12
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${AGILITY_SDK_PATH}/bin/x64/D3D12Core.dll" $<TARGET_FILE_DIR:dxla_playground>/D3D12/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DXC_SDK_PATH}/bin/x64/dxcompiler.dll" $<TARGET_FILE_DIR:dxla_playground>/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DXC_SDK_PATH}/bin/x64/dxil.dll" $<TARGET_FILE_DIR:dxla_playground>/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DSTORAGE_SDK_PATH}/bin/x64/dstorage.dll" $<TARGET_FILE_DIR:dxla_playground>/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${DSTORAGE_SDK_PATH}/bin/x64/dstoragecore.dll" $<TARGET_FILE_DIR:dxla_playground>/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE_DIR:dxait_shared>/dxait.dll $<TARGET_FILE_DIR:dxla_playground>/
 )

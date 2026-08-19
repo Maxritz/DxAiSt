@@ -47,7 +47,11 @@ ComPtr<IDxcBlob> ShaderCompiler::compile_hlsl(
     source_buffer.Encoding = CP_UTF8;
 
     ComPtr<IDxcResult> result;
-    if (FAILED(m_compiler->Compile(&source_buffer, arguments.data(), static_cast<UINT32>(arguments.size()), nullptr, IID_PPV_ARGS(&result)))) {
+    ComPtr<IDxcIncludeHandler> include_handler;
+    if (FAILED(m_utils->CreateDefaultIncludeHandler(&include_handler))) {
+        throw std::runtime_error("Failed to create default include handler");
+    }
+    if (FAILED(m_compiler->Compile(&source_buffer, arguments.data(), static_cast<UINT32>(arguments.size()), include_handler.Get(), IID_PPV_ARGS(&result)))) {
         throw std::runtime_error("DXC compilation failed");
     }
 
@@ -112,13 +116,14 @@ ComPtr<ID3D12PipelineState> PipelineCache::get_or_compile(
     const std::string& hlsl_source,
     ID3D12RootSignature* root_sig,
     const std::wstring& entry,
-    const std::vector<ShaderCompileMacro>& macros
+    const std::vector<ShaderCompileMacro>& macros,
+    const std::wstring& target_profile
 ) {
     std::lock_guard<std::mutex> lock(m_mutex);
     auto it = m_cache.find(key);
     if (it != m_cache.end()) return it->second;
 
-    auto blob = m_compiler.compile_hlsl(hlsl_source, entry, L"cs_6_6", macros);
+    auto blob = m_compiler.compile_hlsl(hlsl_source, entry, target_profile, macros);
     auto pso = m_compiler.create_compute_pso(m_device, root_sig, blob.Get());
     m_cache[key] = pso;
     return pso;

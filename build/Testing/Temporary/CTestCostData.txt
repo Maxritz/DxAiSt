@@ -1,31 +1,60 @@
-test_device_init 73 0.00322689
-test_mem_alloc 73 0.00315906
-test_dxjit_blas 67 0.00354227
-test_substrate_full 67 0.00347822
-test_model_inference 62 0.00410678
-test_attention_rand 61 0.00447122
-test_q4_quant 58 0.00438447
-test_model_formats 51 0.000845743
-test_streaming_sharding 42 0.00541667
-test_real_model_loading 37 0.00590985
-test_large_gguf_spillover 28 0.530427
-test_50_50_offloading 25 0.0135017
-test_sharding_perf 24 0.205112
-test_split_load_inference 21 0.0159923
-test_chat_inference_harness 11 0.0574143
-test_512k_rag_mcp 22 0.0178605
-test_dxnetwork 20 0.0112256
-test_dxtriton 20 0.0118526
-test_dxfft 9 0.0265448
-test_dxcache 9 0.0295806
-test_dxspeculative 9 0.0261373
-test_dxgraph 9 0.0245554
-test_dxtrace 9 0.025596
-test_blas_gemm 8 0.0318506
-test_attention_variants 6 0.0587581
-test_attn_paged 3 0.0816834
-test_attn_h2o 3 0.0835108
-test_attn_chunked 3 0.080984
-test_attn_ring 3 0.0824825
-test_attn_ring_multi 3 0.0511047
+test_device_init 1 0.208256
+test_mem_alloc 0 0
+test_dxjit_blas 0 0
+test_substrate_full 0 0
+test_model_inference 0 0
+test_attention_rand 0 0
+test_q4_quant 0 0
+test_model_formats 0 0
+test_streaming_sharding 0 0
+test_real_model_loading 0 0
+test_large_gguf_spillover 0 0
+test_50_50_offloading 0 0
+test_sharding_perf 0 0
+test_split_load_inference 0 0
+test_chat_inference_harness 0 0
+test_512k_rag_mcp 0 0
+test_dxnetwork 0 0
+test_dxtriton 0 0
+test_dxfft 0 0
+test_dxcache 0 0
+test_dxspeculative 0 0
+test_dxgraph 0 0
+test_dxtrace 0 0
+test_blas_gemm 1 0.236398
+test_attention_variants 0 0
+test_attn_paged 0 0
+test_attn_h2o 0 0
+test_attn_chunked 0 0
+test_attn_ring 0 0
+test_attn_ring_multi 0 0
+test_dxla 1 0.283194
 ---
+test_mem_alloc
+test_dxjit_blas
+test_substrate_full
+test_model_inference
+test_attention_rand
+test_q4_quant
+test_model_formats
+test_streaming_sharding
+test_real_model_loading
+test_large_gguf_spillover
+test_50_50_offloading
+test_sharding_perf
+test_split_load_inference
+test_chat_inference_harness
+test_512k_rag_mcp
+test_dxnetwork
+test_dxtriton
+test_dxfft
+test_dxcache
+test_dxspeculative
+test_dxgraph
+test_dxtrace
+test_attention_variants
+test_attn_paged
+test_attn_h2o
+test_attn_chunked
+test_attn_ring
+test_attn_ring_multi

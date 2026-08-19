@@ -87,10 +87,11 @@ void gemm_f16_dot2(uint3 id : SV_DispatchThreadID) {
     if (row >= g_M || col >= g_N) return;
 
     float acc = 0.0f;
-    // K halves packed per uint: 2 elements per load
+    // K halves packed per uint: 2 elements per load, B packed as (B[k][c], B[k+1][c])
+    // pairs per column so dot2add pairs the SAME k with the SAME k (v_dot2_f32_f16).
     for (uint k = 0; k + 1u < g_K; k += 2u) {
         uint aw = g_a[row * (g_K / 2u) + k / 2u];
-        uint bw = g_b[k * (g_N / 2u) + col / 2u];
+        uint bw = g_b[col * (g_K / 2u) + k / 2u];
         half2 ha = half2(f16tof32(aw & 0xFFFFu), f16tof32(aw >> 16));
         half2 hb = half2(f16tof32(bw & 0xFFFFu), f16tof32(bw >> 16));
         // dot2add on RDNA2/RDNA4 (v_dot2_f32_f16). Fallback manual if compiler lacks it.

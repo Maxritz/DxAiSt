@@ -25,7 +25,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{147C1AC0-E58D-30BB-A61E-ED8569DEF364}</ProjectGuid>
+    <ProjectGuid>{55EF5D10-F077-3350-A779-3B8DACCD1622}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.28000.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -69,7 +69,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>F:\DXAiSt\include;E:\DXllama\agility_temp\agility_1.720.0\build\native\include;E:\DXllama\dxc-1.10.2605.2\inc;E:\DXllama\ds14\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\include;E:\DXllama\agility_temp\agility_1.720.0\build\native\include;E:\DXllama\dxc-1.10.2605.2\inc;E:\DXllama\ds14\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -79,7 +79,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>F:\DXAiSt\include;E:\DXllama\agility_temp\agility_1.720.0\build\native\include;E:\DXllama\dxc-1.10.2605.2\inc;E:\DXllama\ds14\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\include;E:\DXllama\agility_temp\agility_1.720.0\build\native\include;E:\DXllama\dxc-1.10.2605.2\inc;E:\DXllama\ds14\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -89,7 +89,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>F:\DXAiSt\include;E:\DXllama\agility_temp\agility_1.720.0\build\native\include;E:\DXllama\dxc-1.10.2605.2\inc;E:\DXllama\ds14\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\include;E:\DXllama\agility_temp\agility_1.720.0\build\native\include;E:\DXllama\dxc-1.10.2605.2\inc;E:\DXllama\ds14\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -99,7 +99,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>F:\DXAiSt\include;E:\DXllama\agility_temp\agility_1.720.0\build\native\include;E:\DXllama\dxc-1.10.2605.2\inc;E:\DXllama\ds14\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\include;E:\DXllama\agility_temp\agility_1.720.0\build\native\include;E:\DXllama\dxc-1.10.2605.2\inc;E:\DXllama\ds14\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -108,11 +108,11 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="F:\DXAiSt\CMakeLists.txt">
+    <CustomBuild Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule F:/DXAiSt/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-C:\Strawberry\c\bin\cmake.exe -SF:/DXAiSt -BF:/DXAiSt/build --check-stamp-file F:/DXAiSt/build/CMakeFiles/generate.stamp
+C:\Strawberry\c\bin\cmake.exe -SC:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt -BC:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build --check-stamp-file C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -120,12 +120,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;F:\DXAiSt\build\CMakeFiles\3.29.2\CMakeCXXCompiler.cmake;F:\DXAiSt\build\CMakeFiles\3.29.2\CMakeRCCompiler.cmake;F:\DXAiSt\build\CMakeFiles\3.29.2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\DXAiSt\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXCompiler.cmake.in;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXCompilerABI.cpp;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCompilerIdDetection.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCXXCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompileFeatures.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompilerABI.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompilerId.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineRCCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineSystem.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeFindBinUtils.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeParseLibraryArchitecture.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeRCCompiler.cmake.in;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystem.cmake.in;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeTestCXXCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeTestCompilerCommon.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeTestRCCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\CrayClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\OrangeC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\TIClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Tasking-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CompilerId\VS-10.vcxproj.in;C:\Strawberry\c\share\cmake-3.29\Modules\Internal\CMakeDetermineLinkerId.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Internal\FeatureTesting.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-Determine-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\3.29.2\CMakeCXXCompiler.cmake;C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\3.29.2\CMakeRCCompiler.cmake;C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\3.29.2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule F:/DXAiSt/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-C:\Strawberry\c\bin\cmake.exe -SF:/DXAiSt -BF:/DXAiSt/build --check-stamp-file F:/DXAiSt/build/CMakeFiles/generate.stamp
+C:\Strawberry\c\bin\cmake.exe -SC:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt -BC:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build --check-stamp-file C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -133,12 +133,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;F:\DXAiSt\build\CMakeFiles\3.29.2\CMakeCXXCompiler.cmake;F:\DXAiSt\build\CMakeFiles\3.29.2\CMakeRCCompiler.cmake;F:\DXAiSt\build\CMakeFiles\3.29.2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\DXAiSt\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXCompiler.cmake.in;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXCompilerABI.cpp;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCompilerIdDetection.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCXXCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompileFeatures.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompilerABI.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompilerId.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineRCCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineSystem.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeFindBinUtils.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeParseLibraryArchitecture.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeRCCompiler.cmake.in;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystem.cmake.in;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeTestCXXCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeTestCompilerCommon.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeTestRCCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\CrayClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\OrangeC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\TIClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Tasking-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CompilerId\VS-10.vcxproj.in;C:\Strawberry\c\share\cmake-3.29\Modules\Internal\CMakeDetermineLinkerId.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Internal\FeatureTesting.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-Determine-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\3.29.2\CMakeCXXCompiler.cmake;C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\3.29.2\CMakeRCCompiler.cmake;C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\3.29.2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule F:/DXAiSt/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-C:\Strawberry\c\bin\cmake.exe -SF:/DXAiSt -BF:/DXAiSt/build --check-stamp-file F:/DXAiSt/build/CMakeFiles/generate.stamp
+C:\Strawberry\c\bin\cmake.exe -SC:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt -BC:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build --check-stamp-file C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -146,12 +146,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;F:\DXAiSt\build\CMakeFiles\3.29.2\CMakeCXXCompiler.cmake;F:\DXAiSt\build\CMakeFiles\3.29.2\CMakeRCCompiler.cmake;F:\DXAiSt\build\CMakeFiles\3.29.2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">F:\DXAiSt\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXCompiler.cmake.in;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXCompilerABI.cpp;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCompilerIdDetection.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCXXCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompileFeatures.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompilerABI.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompilerId.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineRCCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineSystem.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeFindBinUtils.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeParseLibraryArchitecture.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeRCCompiler.cmake.in;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystem.cmake.in;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeTestCXXCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeTestCompilerCommon.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeTestRCCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\CrayClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\OrangeC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\TIClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Tasking-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CompilerId\VS-10.vcxproj.in;C:\Strawberry\c\share\cmake-3.29\Modules\Internal\CMakeDetermineLinkerId.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Internal\FeatureTesting.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-Determine-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\3.29.2\CMakeCXXCompiler.cmake;C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\3.29.2\CMakeRCCompiler.cmake;C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\3.29.2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule F:/DXAiSt/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-C:\Strawberry\c\bin\cmake.exe -SF:/DXAiSt -BF:/DXAiSt/build --check-stamp-file F:/DXAiSt/build/CMakeFiles/generate.stamp
+C:\Strawberry\c\bin\cmake.exe -SC:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt -BC:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build --check-stamp-file C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -159,158 +159,170 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;F:\DXAiSt\build\CMakeFiles\3.29.2\CMakeCXXCompiler.cmake;F:\DXAiSt\build\CMakeFiles\3.29.2\CMakeRCCompiler.cmake;F:\DXAiSt\build\CMakeFiles\3.29.2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">F:\DXAiSt\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXCompiler.cmake.in;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXCompilerABI.cpp;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeCompilerIdDetection.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCXXCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompileFeatures.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompilerABI.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineCompilerId.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineRCCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeDetermineSystem.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeFindBinUtils.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeParseLibraryArchitecture.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeRCCompiler.cmake.in;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystem.cmake.in;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeTestCXXCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeTestCompilerCommon.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CMakeTestRCCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\CrayClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\OrangeC-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\TIClang-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Tasking-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\CompilerId\VS-10.vcxproj.in;C:\Strawberry\c\share\cmake-3.29\Modules\Internal\CMakeDetermineLinkerId.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Internal\FeatureTesting.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-Determine-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Strawberry\c\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\3.29.2\CMakeCXXCompiler.cmake;C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\3.29.2\CMakeRCCompiler.cmake;C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\3.29.2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="F:\DXAiSt\build\ZERO_CHECK.vcxproj">
-      <Project>{0DE3FD32-5EAA-3458-8A79-C1E5D05EDFD4}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\ZERO_CHECK.vcxproj">
+      <Project>{3D3E713D-D359-31C8-87C9-BFD30FCEA5B1}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\dxait.vcxproj">
-      <Project>{BD76DD4D-2C86-3F7A-A502-06FD766A1852}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\dxait.vcxproj">
+      <Project>{4B57808E-D70F-3BC0-9696-D2D502C68A82}</Project>
       <Name>dxait</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\dxbench.vcxproj">
-      <Project>{9851755A-1DF0-3541-B9C5-8D6E83B0FA60}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\dxait_shared.vcxproj">
+      <Project>{A254CE13-FE56-35E4-801A-605AA1CA93AF}</Project>
+      <Name>dxait_shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\dxbench.vcxproj">
+      <Project>{DEC401FD-C38D-3B7A-97D3-8B8EFBD44527}</Project>
       <Name>dxbench</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\dxinspect.vcxproj">
-      <Project>{2A5E7C18-D518-3278-8234-3FEC5B4D19EB}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\dxinspect.vcxproj">
+      <Project>{7F911582-0257-3FED-A3ED-DA89943CF569}</Project>
       <Name>dxinspect</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\dxmodelinfo.vcxproj">
-      <Project>{F53D7BA3-D175-34EF-B4C8-ABA4586A8CE5}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\dxla_playground.vcxproj">
+      <Project>{C8E7220B-DEC3-3721-B1E5-37C058F9CCDB}</Project>
+      <Name>dxla_playground</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\dxmodelinfo.vcxproj">
+      <Project>{1ABA53D1-A5FF-3AA8-8F4A-010714AAFC4D}</Project>
       <Name>dxmodelinfo</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_50_50_offloading.vcxproj">
-      <Project>{2EFEE251-4FC8-3168-BD19-F61032CB462E}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_50_50_offloading.vcxproj">
+      <Project>{6C30A833-B626-3C20-A705-15A840E16568}</Project>
       <Name>test_50_50_offloading</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_512k_rag_mcp.vcxproj">
-      <Project>{004A1C6B-6730-344D-8E2C-D2A1739AD2FF}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_512k_rag_mcp.vcxproj">
+      <Project>{9605E4F2-905D-37E6-B58C-98808F35DFDC}</Project>
       <Name>test_512k_rag_mcp</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_attention_rand.vcxproj">
-      <Project>{19D796B6-16EA-3811-9E4B-956AA6A7A13B}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_attention_rand.vcxproj">
+      <Project>{9F566989-4CA6-32AB-9211-FDC6494C8217}</Project>
       <Name>test_attention_rand</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_attention_variants.vcxproj">
-      <Project>{C9E13DB4-0B28-37DC-8041-EB650CFAAF9A}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_attention_variants.vcxproj">
+      <Project>{F26764EF-4D48-3E6B-A2D7-3906A6D77FD3}</Project>
       <Name>test_attention_variants</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_attn_chunked.vcxproj">
-      <Project>{E8B777AB-EBC3-3ECD-92B6-7755EB70F53E}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_attn_chunked.vcxproj">
+      <Project>{1307E100-515A-3AAB-882A-21E171E22311}</Project>
       <Name>test_attn_chunked</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_attn_gqa_iso.vcxproj">
-      <Project>{CC13E69E-B4C5-38FA-AA7F-25CBCA055999}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_attn_gqa_iso.vcxproj">
+      <Project>{77FA196C-C61F-37A1-8E2E-9FB0614BF7E6}</Project>
       <Name>test_attn_gqa_iso</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_attn_h2o.vcxproj">
-      <Project>{B70B0086-D310-3D50-A02F-15AE1914E07B}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_attn_h2o.vcxproj">
+      <Project>{508C8812-FBEC-3469-A677-7F16019F339F}</Project>
       <Name>test_attn_h2o</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_attn_paged.vcxproj">
-      <Project>{BECFD6F8-B2B2-3313-8A22-3AF1727C8C08}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_attn_paged.vcxproj">
+      <Project>{DD261219-7FCC-3E37-8BCA-B8E55E2AD74D}</Project>
       <Name>test_attn_paged</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_attn_ring.vcxproj">
-      <Project>{7EB07DF0-977B-3282-92E9-45EA096EF8FE}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_attn_ring.vcxproj">
+      <Project>{FA06564A-6347-308B-94CD-7C4626FD47C2}</Project>
       <Name>test_attn_ring</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_attn_ring_multi.vcxproj">
-      <Project>{89C5070F-99C2-3108-8FED-E9ED838B1FDB}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_attn_ring_multi.vcxproj">
+      <Project>{7CAF9F60-61DC-3A28-9558-8E38633F9311}</Project>
       <Name>test_attn_ring_multi</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_blas_gemm.vcxproj">
-      <Project>{196050C1-FE86-3E30-AF10-A7C0EE3E21B4}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_blas_gemm.vcxproj">
+      <Project>{53999785-D9BC-364E-B214-74D58124D16D}</Project>
       <Name>test_blas_gemm</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_chat_inference_harness.vcxproj">
-      <Project>{7B8C0A5F-A890-3D8C-A03F-F440E8CB73FA}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_chat_inference_harness.vcxproj">
+      <Project>{90D139A9-FA65-3C02-AB19-91B8D3B4409F}</Project>
       <Name>test_chat_inference_harness</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_device_init.vcxproj">
-      <Project>{B1234625-E1A6-3D9E-BFA9-C8DC197D389C}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_device_init.vcxproj">
+      <Project>{F2C4A3DD-DE24-3D27-8FFC-F46590D353FF}</Project>
       <Name>test_device_init</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_dxcache.vcxproj">
-      <Project>{8DE233EB-6F72-3C8D-9B4F-A30B6B664389}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_dxcache.vcxproj">
+      <Project>{D0627F3A-8AD6-3946-8E18-93FC39F9D016}</Project>
       <Name>test_dxcache</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_dxfft.vcxproj">
-      <Project>{705581CF-9D0F-3A55-9C52-1DDA4A619D2F}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_dxfft.vcxproj">
+      <Project>{F5DCC529-6CC7-3520-9A09-C3047E825321}</Project>
       <Name>test_dxfft</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_dxgraph.vcxproj">
-      <Project>{30E69931-B547-32C4-8801-3AA17FA26097}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_dxgraph.vcxproj">
+      <Project>{DAD1DB78-D348-3CDC-A557-FA5C23D9098F}</Project>
       <Name>test_dxgraph</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_dxjit_blas.vcxproj">
-      <Project>{4EB5CB87-D7AA-3A72-A417-59F928B393A8}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_dxjit_blas.vcxproj">
+      <Project>{B1D4843C-0761-3F81-BDA3-3E65A041BE07}</Project>
       <Name>test_dxjit_blas</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_dxnetwork.vcxproj">
-      <Project>{67256ED5-59E0-34A2-B737-36BEA8929C9C}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_dxla.vcxproj">
+      <Project>{92D899E4-522E-3EB7-ADC7-CD56BB4A6CE6}</Project>
+      <Name>test_dxla</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_dxnetwork.vcxproj">
+      <Project>{B93CAC45-246F-34C7-ABEE-D9A2F71E901F}</Project>
       <Name>test_dxnetwork</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_dxspeculative.vcxproj">
-      <Project>{877623DF-D4AC-33AB-8E2B-47A2517D1BB1}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_dxspeculative.vcxproj">
+      <Project>{C32FFC3A-C395-33B3-89AB-FFB4F7DAE878}</Project>
       <Name>test_dxspeculative</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_dxtrace.vcxproj">
-      <Project>{92E947B6-CF83-383D-86C4-8473976E5F9F}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_dxtrace.vcxproj">
+      <Project>{A53AB146-9D8C-375D-B161-8FB286EFBB16}</Project>
       <Name>test_dxtrace</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_dxtriton.vcxproj">
-      <Project>{06B405F4-54C4-38F9-8370-0DE0AF731CD2}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_dxtriton.vcxproj">
+      <Project>{767301A8-61BD-3037-967E-4D3325B50532}</Project>
       <Name>test_dxtriton</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_large_gguf_spillover.vcxproj">
-      <Project>{3AB57119-C037-3075-BAA8-E71869073C52}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_large_gguf_spillover.vcxproj">
+      <Project>{8ED53879-53BA-3395-AD04-2BABB46A871D}</Project>
       <Name>test_large_gguf_spillover</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_mem_alloc.vcxproj">
-      <Project>{60365449-F27D-352D-8E1E-491B70F40DD1}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_mem_alloc.vcxproj">
+      <Project>{B5DDBD51-35B8-364E-8B41-0AF6BF34D465}</Project>
       <Name>test_mem_alloc</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_model_formats.vcxproj">
-      <Project>{51931C29-FF73-3C4E-B43C-CC43B47E791F}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_model_formats.vcxproj">
+      <Project>{F3645515-0B06-36DD-9963-DB139CA7A879}</Project>
       <Name>test_model_formats</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_model_inference.vcxproj">
-      <Project>{40CC689F-44B6-3173-921F-3D53B4249645}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_model_inference.vcxproj">
+      <Project>{56BD0C89-ED5C-3E0E-88A5-7F1D633D2831}</Project>
       <Name>test_model_inference</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_q4_quant.vcxproj">
-      <Project>{E6C548E9-9327-3FB7-B7DC-35E0E4AA267A}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_q4_quant.vcxproj">
+      <Project>{343951A6-207D-384C-B60F-E067EF754ADE}</Project>
       <Name>test_q4_quant</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_real_model_loading.vcxproj">
-      <Project>{C245F86E-D66A-3E6E-9ECB-99C62FC43C0A}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_real_model_loading.vcxproj">
+      <Project>{F2F775D3-8590-3CB3-A338-39F125D1C5AF}</Project>
       <Name>test_real_model_loading</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_sharding_perf.vcxproj">
-      <Project>{E15457B4-A8D9-3BBA-B9F7-8C7B38A4F5D8}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_sharding_perf.vcxproj">
+      <Project>{C5C9CC5B-F302-3E30-9D47-7C842C953F09}</Project>
       <Name>test_sharding_perf</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_split_load_inference.vcxproj">
-      <Project>{2FB34D08-D298-38B0-B95B-340DEBD2CBB0}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_split_load_inference.vcxproj">
+      <Project>{7E6510D0-B43C-3046-A045-4922DDED64CD}</Project>
       <Name>test_split_load_inference</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_streaming_sharding.vcxproj">
-      <Project>{1B4C4711-763B-3C07-862C-F7A28F94DE25}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_streaming_sharding.vcxproj">
+      <Project>{14FEA1BF-DA22-3302-8C8E-C18838B3816A}</Project>
       <Name>test_streaming_sharding</Name>
     </ProjectReference>
-    <ProjectReference Include="F:\DXAiSt\build\test_substrate_full.vcxproj">
-      <Project>{F8603048-FD08-3CCF-AAB5-877BEEFA480D}</Project>
+    <ProjectReference Include="C:\Users\rr\Desktop\NEWDXLA-ALT\DXAiSt\build\test_substrate_full.vcxproj">
+      <Project>{561D2127-527C-3097-BCAD-3F8ECFB376F5}</Project>
       <Name>test_substrate_full</Name>
     </ProjectReference>
   </ItemGroup>

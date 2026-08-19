@@ -1,6 +1,6 @@
-^F:\DXAIST\CMAKELISTS.TXT
+^C:\USERS\RR\DESKTOP\NEWDXLA-ALT\DXAIST\CMAKELISTS.TXT
 setlocal
-C:\Strawberry\c\bin\cmake.exe -SF:/DXAiSt -BF:/DXAiSt/build --check-stamp-file F:/DXAiSt/build/CMakeFiles/generate.stamp
+C:\Strawberry\c\bin\cmake.exe -SC:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt -BC:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build --check-stamp-file C:/Users/rr/Desktop/NEWDXLA-ALT/DXAiSt/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

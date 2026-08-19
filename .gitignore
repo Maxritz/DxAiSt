@@ -1,0 +1,3 @@
+# build artifacts (historically tracked; ignore going forward)
+build/
+*.log

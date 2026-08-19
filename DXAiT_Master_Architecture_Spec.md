@@ -82,6 +82,40 @@ The runtime hides those decisions behind explicit handles and execution graphs.
 
 ---
 
+# 1.1 Implementation Status (read this first)
+
+This document is a **forward-looking architecture specification**. The following describes the
+complete intended fabric. As of the current tree, only a subset is actually implemented and
+shipped in `src/`. To avoid confusion between spec and reality:
+
+**Implemented modules (present in `src/`, each with a header under `include/dxait/` and a test harness):**
+
+```
+dxadapter  dxruntime  dxqueue    dxmem     dxbarrier  dxio      dxgraph
+dxsched    dxtrace    dxjit      dxblas    dxmath     dxattention dxquant
+dxkv       dxcontext  dxdb       dxmcp     dxmodel    dxchunk   dxshard
+dxcache    dxcollective dxnetwork dxrand   dxfft      dxspeculative dxtriton
+dxla       dxstream   dxiocp
+```
+
+**Model loaders implemented:** GGUF and Safetensors only (memory-mapped). The earlier
+PTE / ONNX / PyTorch-bin parsers were removed (they were stubs with no torch dependency).
+
+**NOT yet implemented (described below as forward scope, not present in the tree):**
+
+- `dxpeer`, `dxcluster` — local GPU-to-GPU and multi-server fabric (Sections 29, 32–39, 42–44).
+- `dxconv` — convolution module (Sections 51, 654+).
+- `dxsparse` — sparse module (Sections 52, 672+).
+- Distributed collectives beyond single-GPU ring all-reduce (`dxcollective` exists but
+  multi-GPU paths skip when only one GPU is present).
+- Tracing (`dxtrace`) is implemented as native D3D12 event markers; the full telemetry
+  timeline / stall-classifier described in Sections 25–28 is not built out.
+
+Everything else (execution substrate, BLAS/math/quant/attention/KV/model loading/JIT,
+DirectStorage streaming, IOCP network streaming, sharding, long-context, RAG+MCP) is real.
+
+---
+
 # 2. Design Goals
 
 ## 2.1 Primary Goals
@@ -191,88 +225,29 @@ Compute modules must not independently reinvent:
 
 # 5. Repository Layout
 
-Recommended repository:
+Recommended repository (current state — only these modules exist; see §1.1 for the
+implemented list and the forward-scope modules that are not yet present):
 
 ```text
 DXAiT/
-├── include/
-│   ├── dxruntime/
-│   ├── dxadapter/
-│   ├── dxqueue/
-│   ├── dxfence/
-│   ├── dxbarrier/
-│   ├── dxmem/
-│   ├── dxio/
-│   ├── dxgraph/
-│   ├── dxsched/
-│   ├── dxtrace/
-│   ├── dxcluster/
-│   ├── dxpeer/
-│   ├── dxcollective/
-│   ├── dxshard/
-│   ├── dxblas/
-│   ├── dxmath/
-│   ├── dxquant/
-│   ├── dxfft/
-│   ├── dxrand/
-│   ├── dxconv/
-│   ├── dxsparse/
-│   ├── dxattention/
-│   ├── dxkv/
-│   ├── dxmodel/
-│   └── dxjit/
+├── include/dxait/        one header per module (dxait.hpp is the core umbrella)
 │
-├── src/
-│   ├── dxruntime/
-│   ├── dxadapter/
-│   ├── dxqueue/
-│   ├── dxfence/
-│   ├── dxbarrier/
-│   ├── dxmem/
-│   ├── dxio/
-│   ├── dxgraph/
-│   ├── dxsched/
-│   ├── dxtrace/
-│   ├── dxcluster/
-│   ├── dxpeer/
-│   ├── dxcollective/
-│   ├── dxshard/
-│   ├── dxblas/
-│   ├── dxmath/
-│   ├── dxquant/
-│   ├── dxfft/
-│   ├── dxrand/
-│   ├── dxconv/
-│   ├── dxsparse/
-│   ├── dxattention/
-│   ├── dxkv/
-│   ├── dxmodel/
-│   └── dxjit/
+├── src/                  one folder per module (matches include/dxait headers)
+│   ├── dxadapter/ dxruntime/ dxqueue/ dxmem/ dxbarrier/ dxio/
+│   ├── dxgraph/ dxsched/ dxtrace/ dxjit/ dxblas/ dxmath/
+│   ├── dxattention/ dxquant/ dxkv/ dxcontext/ dxdb/ dxmcp/
+│   ├── dxmodel/ dxchunk/ dxshard/ dxcache/ dxcollective/
+│   ├── dxnetwork/ dxrand/ dxfft/ dxspeculative/ dxtriton/
+│   ├── dxla/ dxstream/ dxiocp/
+│   └── shaders/          HLSL sources for the compute kernels
 │
-├── shaders/
-│   ├── common/
-│   ├── dxblas/
-│   ├── dxmath/
-│   ├── dxquant/
-│   ├── dxfft/
-│   ├── dxrand/
-│   ├── dxconv/
-│   ├── dxsparse/
-│   ├── dxattention/
-│   └── dxkv/
-│
-├── tools/
-│   ├── dxshaderc/
-│   ├── dxtrace/
-│   ├── dxinspect/
-│   ├── dxbench/
-│   └── dxmodelinfo/
-│
-├── tests/
-├── specs/
-├── examples/
-└── third_party/
+├── tools/                dxinspect, dxbench, dxai_ingest
+└── tests/                one harness per module (see README test matrix)
 ```
+
+Note: there is no `dxfence` module (fences live in `dxait.hpp` / `dxqueue`), and the
+aspirational `dxpeer`, `dxcluster`, `dxconv`, `dxsparse`, `dxshaderc`, `dxmodelinfo`,
+`specs/`, `examples/`, `third_party/` entries from earlier drafts are not present.
 
 ---
 
@@ -1457,6 +1432,12 @@ RPC
 
 Remote buffers are scoped to authenticated sessions.
 
+> **Current implementation note:** the shipped `dxnetwork` `NetworkTensorTransport`
+> provides a *toggleable XOR* payload obfuscation plus an HMAC-style auth token
+> (`SecurityEngine`). This is obfuscation for trusted LAN use, **not** authenticated
+> encryption — it is not a substitute for TLS/IPsec on untrusted networks. Real
+> encrypted transport (and the multi-server fabric above) remains forward scope.
+
 ---
 
 # 45. Compute Module API
@@ -1742,25 +1723,15 @@ KV pages must be regular `DXBuffer` resources underneath the abstraction.
 
 # 55. Model Loader
 
-`dxmodel` should support:
+`dxmodel` supports (implemented):
 
 ```text
-GGUF
-safetensors
-OpenVINO IR
-raw binary tensors
+GGUF          (memory-mapped, full metadata + tensor parser)
+safetensors   (memory-mapped)
 ```
 
-The loader should separate:
-
-```text
-metadata
-tensor descriptors
-storage
-residency
-```
-
-A model does not need to load all tensor bytes into VRAM.
+Earlier PTE / ONNX / PyTorch-bin parsers existed as stubs and were removed (no torch
+dependency). A model does not need to load all tensor bytes into VRAM.
 
 ---
 

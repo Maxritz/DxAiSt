@@ -111,6 +111,7 @@ public:
     void signal(ID3D12CommandQueue* queue, uint64_t val);
     void wait(uint64_t val);
     bool is_completed(uint64_t val) const;
+    ID3D12Fence* get() const { return m_fence.Get(); }
 
 private:
     ComPtr<ID3D12Fence> m_fence;

@@ -3,6 +3,25 @@
 
 namespace dxait {
 
+namespace {
+struct ConfigState {
+    uint64_t chunk_size_bytes = 1024ull * 1024; // 1 MiB default payload chunk
+    double vram_margin_ratio = 0.10;            // keep 10% VRAM headroom
+    bool async_prefetch_enabled = true;
+};
+ConfigState& config_state() {
+    static ConfigState s;
+    return s;
+}
+} // namespace
+
+uint64_t Config::get_chunk_size_bytes() { return config_state().chunk_size_bytes; }
+void Config::set_chunk_size_bytes(uint64_t bytes) { config_state().chunk_size_bytes = bytes; }
+double Config::get_vram_margin_ratio() { return config_state().vram_margin_ratio; }
+void Config::set_vram_margin_ratio(double ratio) { config_state().vram_margin_ratio = ratio; }
+bool Config::is_async_prefetch_enabled() { return config_state().async_prefetch_enabled; }
+void Config::set_async_prefetch_enabled(bool enabled) { config_state().async_prefetch_enabled = enabled; }
+
 void TDRGuard::yield_gpu_breather(ID3D12CommandQueue* queue, ID3D12Fence* fence, uint64_t& fence_val) {
     if (!queue || !fence) return;
     fence_val++;
